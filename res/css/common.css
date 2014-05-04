@@ -1,0 +1,339 @@
+#main {
+	width: 1000px;
+	min-height: 500px;
+	margin: 20px auto;
+}
+
+.ctx-center {
+	text-align: center;
+}
+.float-l {
+	float: left;
+}
+.float-r {
+	float: right;
+}
+
+/*
+* naver
+*/
+.naver {
+	padding: 10px 50px;
+	overflow: hidden;
+	border-bottom: 1px solid #eee;
+}
+.naver-brand {
+	float: left;
+	font-size: 18px;
+	font-weight: bold;
+}
+.naver-sub {
+	float: right;
+}
+.naver a {
+	margin-left: 5px;
+	color: #F52A2A;
+}
+
+/*
+* footer
+*/
+.footer {
+	text-align: center;
+	color: #999;
+}
+.footer p {
+	margin-bottom: 10px;
+}
+.footer a {
+	margin-right: 5px;
+	color: #999;
+}
+.footer a:hover {
+	text-decoration: underline;
+}
+
+/*
+* index search
+*/
+#search-form-index {
+	margin: 50px 0;
+}
+#search-classify, #search-ctx, #search-btn {
+	height: 30px;
+	font-size: 18px;
+}
+#search-classify {
+	text-align: center;
+	background: #fff;
+	color: #727690;
+	border: 1px solid #BFC0CA;
+	border-radius: 2px;
+}
+#search-ctx {
+	width: 300px;
+}
+#search-btn {
+	width: 60px;
+	background: #46A8F1;
+	color: #fff;
+	border: 1px solid #bbbbbb;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+/*
+* recommend-list
+*/
+.recommend-block {
+	overflow: hidden;
+}
+.recommend-list {
+	width: 430px;
+	float: left;
+	margin-right: 20px;
+	padding: 2px 20px 20px;
+	border: 1px solid #eee;
+}
+.recommend-list h2 {
+	margin-bottom: 15px;
+}
+.recommend-list span {
+	font-size: 18px;
+	font-weight: bold;
+	border-top: 2px solid #F52A2A;
+}
+.recommend-list li {
+	width:430px;
+	margin-bottom: 10px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.recommend-list li a:hover {
+	color: #46A8F1;
+}
+
+/*****************************
+* 列表 list.php
+******************************/
+/*
+*  list-nav
+*/
+.list-nav {
+	/*overflow: hidden;*/
+	height: 40px;
+	position: relative;
+	border-bottom: 1px solid #eee;
+}
+.list-nav-classify {
+	padding-left: 15px;
+	position: absolute;
+	bottom: -1px;
+	background: #fff;
+	border-top: 1px solid #eee;
+	border-left: 1px solid #eee;
+	border-right: 1px solid #eee;
+}
+.list-nav-classify li {
+	margin-right: 15px;
+	float: left;
+}
+.list-nav-classify li a {
+	padding: 12px 0 10px;
+	display: block;
+}
+.list-nav-classify li .act, .list-nav-classify li a:hover {
+	padding: 10px 0 10px;
+	color: #F52A2A;
+	border-top: 2px solid #F52A2A;	
+}
+
+/*
+*  search
+*/
+.search-block {
+	position: absolute;
+	right: 0;
+}
+.search-block .search-input-ctx {
+	width: 300px;
+	height: 25px;
+	font-size: 14px;
+	z-index: 10;
+	overflow: hidden;
+}
+.search-block .btn-search {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	border: 0;
+	background: url(../img/search.png) center center no-repeat;
+	text-indent: -9999em;
+}
+
+/*
+*  分类列表 list-classify-block
+*/
+.list-classify-block {
+	margin-top: 20px;
+	padding: 30px 20px 15px 20px;
+	overflow-x: hidden;
+	border: 1px solid #eee;
+}
+.list-classify-block a {
+	display: block;
+	float: left;
+	margin-right: 15px;
+	margin-bottom: 15px;
+}
+
+/*
+*  论文列表 list-ctx-block
+*/
+.list-ctx-block {
+	width: 100%;
+	margin-top: 20px;
+	text-align: left;
+	border-top: 1px solid #eee;
+	border-left: 1px solid #eee;
+	border-right: 1px solid #eee;
+	font-size: 14px;
+}
+.list-ctx-block .paper-num {
+	width: 79px;
+}
+.list-ctx-block .paper-serial {
+	width: 139px;
+}
+.list-ctx-block .paper-title {
+	width: 589px;
+}
+.list-ctx-block .paper-author {
+	width: 115px;
+}
+.list-ctx-block .paper-download {
+	width: 77px;
+}
+.list-ctx-block th {
+	background: #f3f3f3;
+}
+.list-ctx-block td, .list-ctx-block th {
+	padding: 10px 0;
+	border-bottom: 1px solid #eee;
+}
+.list-ctx-block .paper-num {
+	text-align: center;
+}
+.list-ctx-block .paper-title a {
+	color: #46A8F1;
+}
+.list-ctx-block .paper-title a:hover {
+	color: #F52A2A;
+}
+.list-ctx-block .paper-download a {
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: url(../img/download.png) no-repeat;
+}
+.list-ctx-block .paper-download a:hover {
+	background: url(../img/download-hover.png) no-repeat;
+}
+
+/*
+*  分页 pager
+*/
+.pager-block {
+	margin: 20px auto 0;
+	text-align: center;	
+}
+.pager {
+	overflow-x: hidden;
+	display: inline-block;
+}
+.pager li {
+	margin-left: 10px;
+	display: inline;
+}
+.pager li a {
+	padding: 5px 10px;
+	display: inline-block;
+	border-radius: 3px;
+	color: #46A8F1;
+}
+.pager li a:hover, .pager li a.act {
+	background: #46A8F1;
+	color: #fff;
+}
+
+
+/*****************************
+* 注册、登录
+******************************/
+.log-reg-form {
+ 	width: 408px;
+ 	margin: 60px auto 0;
+ 	font-size: 16px;
+}
+.log-reg-form p {
+	margin-bottom: 20px;
+}
+.log-reg-form label {
+	width: 80px;
+	margin-right: 15px;
+	text-align: right;
+	display: inline-block;
+}
+.log-reg-form .input-txt {
+	width: 300px;
+	height: 30px;
+	font-size: 16px;
+}
+.log-reg-form .submit {
+	width: 60px;
+	height: 30px;
+	float: right;
+	background: #46A8F1;
+	color: #fff;
+	font-size: 16px;
+	border: 1px solid #bbbbbb;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+/*
+* 
+*/
+
+
+/*
+* 
+*/
+
+/*
+* 
+*/
+
+
+/*
+* 
+*/
+
+
+/*
+* 
+*/
+
+
+
+
+
+
+
+
+
+
+
