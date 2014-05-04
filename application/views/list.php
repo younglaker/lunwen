@@ -21,20 +21,20 @@
 	<!-- <div class="list-ctx-block"> -->
 		<table class="list-ctx-block">
 			<tr>
-				<th class="paper-num">序号</th>
-				<th class="paper-serial">编号</th>
-				<th class="paper-title">题名</th>
-				<th class="paper-author">作者</th>
-				<th class="paper-download">下载</th>
+				<th class="list-paper-num">序号</th>
+				<th class="list-paper-serial">编号</th>
+				<th class="list-paper-title">题名</th>
+				<th class="list-paper-author">作者</th>
+				<th class="list-paper-download">下载</th>
 			</tr>
 
 			<?php for($n=1;$n!=8;$n++): ?>
 			<tr>
-				<td class="paper-num"><?php echo $n; ?></td>
-				<td class="paper-serial">I980.110</td>
-				<td class="paper-title"><a href="">前端性能优化（Application Cache篇</a></td>
-				<td class="paper-author">王小二</td>
-				<td class="paper-download"><a href=""></a></td>
+				<td class="list-paper-num"><?php echo $n; ?></td>
+				<td class="list-paper-serial">I980.110</td>
+				<td class="list-paper-title"><a href="">前端性能优化（Application Cache篇</a></td>
+				<td class="list-paper-author">王小二</td>
+				<td class="list-paper-download"><a href=""></a></td>
 			</tr>
 			<?php endfor; ?>
 		</table>

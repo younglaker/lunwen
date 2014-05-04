@@ -11,4 +11,6 @@
             <button class="btn-search" type="submit">搜索</button>
         </form>
 	</div>
+
+	.paper-
 </div>

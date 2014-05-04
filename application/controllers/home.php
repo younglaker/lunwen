@@ -94,7 +94,7 @@ class Home extends CI_Controller {
 	 *
 	 * @return void
 	 **/
-	function rigster()
+	function lister()
 	{
 		$base_url = base_url();
 		$data['base_url'] = $base_url."index.php";
