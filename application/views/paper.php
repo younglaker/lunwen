@@ -16,6 +16,7 @@
 		<h1 class="paper-title">低气压辉光放电等离子体模拟与特性研究</h1>
 		<p class="paper-deal">
 			<a href="">下载</a>
+			<a href="">收藏</a>
 			<a href="">修改</a>
 		</p>
 		<dl class="paper-info">

@@ -125,4 +125,21 @@ class Home extends CI_Controller {
 		$this->load->view("common/footer.php", $data);
 	}
 
+	/**
+	 * 个人主页
+	 *
+	 **/
+	function homepage()
+	{
+		$base_url = base_url();
+		$data['base_url'] = $base_url."index.php";
+		$data['css'] = $base_url."res/css";
+		$data['js'] = $base_url."res/js";
+		$data['img'] = $base_url."res/img";
+
+		$this->load->view("common/header.php", $data);
+		$this->load->view('user_home', $data);
+		$this->load->view("common/footer.php", $data);
+	}
+
 }

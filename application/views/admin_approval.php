@@ -1,21 +1,14 @@
 <div id="main">
 	<div class="list-nav">
 		<ul class="list-nav-classify">
-			<li><a href="">全部</a></li>
-			<li><a href="" class="act">学校</a></li>
-			<li><a href="">专业</a></li>
-			<li><a href="">研究方向</a></li>
+			<li><a href="">论文管理</a></li>
+			<li><a href="">用户管理</a></li>
+			<li><a href="" class="act">审批论文</a></li>
 		</ul>
 		<form class="search-block" action="">
             <input type="text" class="search-input-ctx" name="q" autocomplete="off" spellcheck="false" placeholder="搜索论文、作者">
             <button class="btn-search" type="submit">搜索</button>
         </form>
-	</div>
-
-	<div class="list-classify-block">
-		<?php for($n=0;$n!=8;$n++): ?>
-		<a href="">D.等离子物理运用</a></li>
-		<?php endfor; ?>
 	</div>
 
 	<table class="list-ctx-block">
@@ -24,7 +17,7 @@
 			<th class="list-paper-serial">编号</th>
 			<th class="list-paper-title">题名</th>
 			<th class="list-paper-author">作者</th>
-			<th class="list-paper-download">下载</th>
+			<th class="list-paper-download">操作</th>
 		</tr>
 
 		<?php for($n=1;$n!=8;$n++): ?>
@@ -33,7 +26,10 @@
 			<td class="list-paper-serial">I980.110</td>
 			<td class="list-paper-title"><a href="">前端性能优化（Application Cache篇</a></td>
 			<td class="list-paper-author">王小二</td>
-			<td class="list-paper-download"><a href=""></a></td>
+			<td class="list-paper-deal">
+				<a href="">发布</a>
+				<a href="">删除</a>
+			</td>
 		</tr>
 		<?php endfor; ?>
 	</table>

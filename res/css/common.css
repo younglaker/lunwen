@@ -3,7 +3,12 @@
 	min-height: 500px;
 	margin: 20px auto;
 }
-
+a {
+	color: #46A8F1;
+}
+a:hover {
+	color: #F52A2A;
+}
 .ctx-center {
 	text-align: center;
 }
@@ -13,6 +18,33 @@
 .float-r {
 	float: right;
 }
+.mrg-top-10 {
+	margin-top: 10px;
+}
+.mrg-top-20 {
+	margin-top: 20px;
+}
+.a-btn-lg {
+	padding: 10px 15px;
+	color: #fff;
+	background: #46A8F1;
+	display: inline-block;
+	border-radius: 5px;
+}
+.title-h2 {
+	margin-bottom: 10px;
+	font-size: 18px;
+	font-weight: 600;
+}
+.btn-blue-lg {
+	padding: 10px 20px;
+	background: #46A8F1;
+	color: #fff;
+	border: 0;
+	font-size: 18px;
+	border-radius: 3px;
+	cursor: pointer;
+}
 
 /*
 * naver
@@ -20,7 +52,8 @@
 .naver {
 	padding: 10px 50px;
 	overflow: hidden;
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #C3C5D1;
+	background: #eee;
 }
 .naver-brand {
 	float: left;
@@ -141,6 +174,7 @@
 }
 .list-nav-classify li a {
 	padding: 12px 0 10px;
+	color: #000;
 	display: block;
 }
 .list-nav-classify li .act, .list-nav-classify li a:hover {
@@ -226,12 +260,6 @@
 }
 .list-ctx-block .list-paper-num {
 	text-align: center;
-}
-.list-ctx-block .list-paper-title a {
-	color: #46A8F1;
-}
-.list-ctx-block .list-paper-title a:hover {
-	color: #F52A2A;
 }
 .list-ctx-block .list-paper-download a {
 	display: block;
@@ -342,10 +370,6 @@
 }
 .paper-block .paper-deal a {
 	margin-right: 10px;
-	color: #46A8F1;
-}
-.paper-block .paper-deal a:hover {
-	color: #F52A2A;
 }
 .paper-block .paper-sub-title {
 	margin-bottom: 10px;
@@ -356,23 +380,25 @@
 	line-height: 20px;
 }
 
-/*
-* 
-*/
 
-/*
-* 
-*/
-
-
-/*
-* 
-*/
-
-
-/*
-* 
-*/
+/*****************************
+* 上传
+******************************/
+.upload-block {
+	padding: 20px;
+	background: #eee;
+}
+.upload-block p {
+	margin-bottom: 10px;
+}
+.upload-block label {
+	margin-bottom: 5px;
+	display: block;
+}
+.upload-block .input-ctx {
+	width: 300px;
+	height: 25px;
+}
 
 
 
