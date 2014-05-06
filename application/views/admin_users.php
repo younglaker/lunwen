@@ -40,16 +40,17 @@
         <?php $i++ ?> 
 		<?php } endforeach; ?>
 	</table>
-
 	<div class="pager-block">
-		<ul class="pager">
-			<li><a href="">上一页</a></li>
-			<li><a href="" class="act">1</a></li>
-			<li><a href="">2</a></li>
-			<li><a href="">3</a></li>
-			<li><a href="">4</a></li>
-			<li><a href="">5</a></li>
-			<li><a href="">下一页</a></li>
+        <ul class="pager">
+            <?php if($current > 1) {?> 
+                <li><a href="<?php echo base_url();?>index.php/admin/users/<?php echo $current - 1;?>">上一页</a></li>
+            <?php } ?>
+            <?php for($i = 1; $i <= $userlist[0]['total']; $i++) {?>
+                <li><a href="<?php echo base_url();?>index.php/admin/users/<?php echo $i;?>" <?php if($i == $current) {?>class="act"<?php }?> > <?php echo $i;?></a></li>
+            <?php }?>
+            <?php if($current < $userlist[0]['total']) {?> 
+                <li><a href="<?php echo base_url();?>index.php/admin/users/<?php echo $current + 1;?>">下一页</a></li>
+            <?php } ?>
 		</ul>
 	</div>
 </div>

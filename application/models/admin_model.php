@@ -4,9 +4,19 @@ class Admin_model extends CI_Model {
   {
     $this->load->database();
   }
-  public function getUserList($uid)
+  public function getUserList($uid,$page)
   {
-    $sql = "SELECT id,name,role FROM p_user WHERE id != ?";
+    $pagesize = 10;
+    $sql = "SELECT COUNT(id) AS num FROM p_user";
+    $query = $this->db->query($sql);
+    $result = $query->result_array();
+    $offset = ($page-1)*$pagesize;
+    $count = count($result) > 0?$result[0]['num']:1;
+    $total = ceil($count/$pagesize);
+    $sql = "SELECT id,name,role,'$total' AS total 
+            FROM p_user WHERE id != ? 
+            ORDER BY id DESC 
+            LIMIT $offset,$pagesize";
     $query = $this->db->query($sql,array($uid));
     return $query->result_array();
   }
