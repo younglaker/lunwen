@@ -1,9 +1,9 @@
 <div id="main">
 	<div class="list-nav">
-		<ul class="list-nav-classify">
-			<li><a href="">论文管理</a></li>
-			<li><a href="">用户管理</a></li>
-			<li><a href="" class="act">审批论文</a></li>
+        <ul class="list-nav-classify">
+            <li><a href="<?php echo base_url();?>index.php/admin/paper">论文管理</a></li>
+            <li><a href="<?php echo base_url();?>index.php/admin/users">用户管理</a></li>
+			<li><a href="<?php echo base_url();?>index.php/admin/approval" class="act">审批论文</a></li>
 		</ul>
 		<form class="search-block" action="">
             <input type="text" class="search-input-ctx" name="q" autocomplete="off" spellcheck="false" placeholder="搜索论文、作者">

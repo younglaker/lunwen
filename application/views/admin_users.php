@@ -1,9 +1,9 @@
 <div id="main">
 	<div class="list-nav">
 		<ul class="list-nav-classify">
-			<li><a href="">论文管理</a></li>
-			<li><a href="" class="act">用户管理</a></li>
-			<li><a href="">审批论文</a></li>
+			<li><a href="<?php echo base_url();?>index.php/admin/paper">论文管理</a></li>
+            <li><a href="<?php echo base_url();?>index.php/admin/users" class="act">用户管理</a></li>
+			<li><a href="<?php echo base_url();?>index.php/admin/approval">审批论文</a></li>
 		</ul>
 		<form class="search-block" action="">
             <input type="text" class="search-input-ctx" name="q" autocomplete="off" spellcheck="false" placeholder="搜索论文、作者">
@@ -19,26 +19,26 @@
 			<th class="">操作</th>
 		</tr>
 
-		<?php for($n=1;$n!=5;$n=$n+2): ?>
+		<?php $i = 1; foreach( $userlist as $key => $value ): {?>
 		<tr>
-			<td class="ctx-center"><?php echo $n; ?></td>
-			<td class="">王小二</td>
-			<td>普通用户</td>
-			<td class="">
-				<a href="">设为管理员</a>
-				<a href="">删除</a>
-			</td>
+			<td class="ctx-center"><?php echo $i; ?></td>
+            <td class=""><?php echo $value['name'];?></td>
+            <?php if( $value['role'] < 1 ) {?>
+                <td>普通用户</td>
+                <td class="">
+                <a href="<?php echo base_url();?>index.php/api/setrole/<?php echo $value['id'];?>/1">设为管理员</a>
+                    <a href="<?php echo base_url();?>index.php/api/userdelete/<?php echo $value['id'];?>">删除</a>
+                </td>
+            <?php } else {?>
+                <td>管理员</td>
+                <td class="">
+                <a href="<?php echo base_url();?>index.php/api/setrole/<?php echo $value['id'];?>/0">取消管理员</a>
+                    <a href="<?php echo base_url();?>index.php/api/userdelete/<?php echo $value['id'];?>">删除</a>
+                </td>
+            <?php }?>
 		</tr>
-		<tr>
-			<td class="ctx-center"><?php echo $n+1; ?></td>
-			<td class="">张三</td>
-			<td>管理员</td>
-			<td class="">
-				<a href="">取消管理员</a>
-				<a href="">删除</a>
-			</td>
-		</tr>
-		<?php endfor; ?>
+        <?php $i++ ?> 
+		<?php } endforeach; ?>
 	</table>
 
 	<div class="pager-block">

@@ -10,6 +10,7 @@ class api extends CI_Controller
         $this->load->helper('url');
         $this->load->library('session');
         $this->load->model('api_model');
+        $this->load->model('admin_model');
         $this->uid = $this->session->userdata('id');
         $this->urole = $this->session->userdata('role');
     }
@@ -105,7 +106,33 @@ class api extends CI_Controller
         {
             if( $this->admin_model->userDelete($uid) )
             {
-                redirect('admin/user');
+                redirect('admin/users');
+            }
+            else
+            {
+                redirect('home/erro');
+            }
+        }  
+        else
+        {
+            show_404();
+        } 
+    }
+
+    /**
+     * set user role
+     *
+     */
+    public function setrole($uid,$role) {
+
+        if( $this->isAdmin() )
+        {
+            $data = array(
+                'role' => $role
+            );
+            if( $this->admin_model->userUpdate( $uid,$data ) )
+            {
+                redirect('admin/users');
             }
             else
             {
@@ -125,18 +152,18 @@ class api extends CI_Controller
     {
         if( $this->isAdmin() )
         {
-        $data = array(
-            'name' => $this->input->post( 'username' ),
-            'role' => $this->input->post( 'role' )
-        );
-        if( $this->admin_model->userUpdate( $uid,$data ) )
-        {
-            redirect('admin/user');
-        }
-        else
-        {
-            redirect('index/erro');
-        }
+            $data = array(
+                'name' => $this->input->post( 'username' ),
+                'role' => $this->input->post( 'role' )
+            );
+            if( $this->admin_model->userUpdate( $uid,$data ) )
+            {
+                redirect('admin/user');
+            }
+            else
+            {
+                redirect('home/erro');
+            }
         }  
         else
         {

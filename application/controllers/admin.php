@@ -9,6 +9,10 @@ class Admin extends CI_Controller {
     {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->model('admin_model');
+        $this->load->library('session');
+        $this->uid = $this->session->userdata('id');
+        $this->urole = $this->session->userdata('role');
         // $this->load->model('lh_model');
         // $this->load->model('org_model');
         // $this->load->model('event_model');
@@ -47,7 +51,7 @@ class Admin extends CI_Controller {
         $data['css'] = $base_url."res/css";
         $data['js'] = $base_url."res/js";
         $data['img'] = $base_url."res/img";
-
+        $data['userlist'] = $this->admin_model->getUserList( $this->uid );
         $this->load->view("common/header.php", $data);
         $this->load->view('admin_users', $data);
         $this->load->view("common/footer.php", $data);
