@@ -17,8 +17,8 @@
         	<a href="./">论文库</a>
         </div>
         <div class="naver-sub">
-        	<a href="">登录</a>
-        	<a href="">注册</a>
+        <a href="<?php echo base_url();?>index.php/home/log">登录</a>
+        <a href="<?php echo base_url();?>index.php/home/register">注册</a>
         </div>
     </div>
 </div>
