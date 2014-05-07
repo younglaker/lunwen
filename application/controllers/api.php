@@ -69,7 +69,6 @@ class api extends CI_Controller
                 'name' => $this->input->post('username'),
                 'password' => md5( $this->input->post('password').'lunwen' ),
                 'status' => 0,
-                'role' => 0
 
             );
             $passconf = md5( $this->input->post('passconf').'lunwen' );
@@ -178,8 +177,7 @@ class api extends CI_Controller
 
     private function isAdmin()
     {
-
-        if( $this->uid !== NULL && $this->urole !== '0' )
+        if( $this->uid !== NULL && $this->urole !== '1' )
         {
             return TRUE;
         }

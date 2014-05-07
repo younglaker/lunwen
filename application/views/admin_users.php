@@ -23,23 +23,24 @@
 		<tr>
 			<td class="ctx-center"><?php echo $i; ?></td>
             <td class=""><?php echo $value['name'];?></td>
-            <?php if( $value['role'] < 1 ) {?>
+            <?php if( $value['role'] < 2 ) {?>
                 <td>普通用户</td>
                 <td class="">
-                <a href="<?php echo base_url();?>index.php/api/setrole/<?php echo $value['id'];?>/1">设为管理员</a>
+                <a href="<?php echo base_url();?>index.php/api/setrole/<?php echo $value['id'];?>/2">设为管理员</a>
                     <a href="<?php echo base_url();?>index.php/api/userdelete/<?php echo $value['id'];?>">删除</a>
                 </td>
             <?php } else {?>
                 <td>管理员</td>
                 <td class="">
-                <a href="<?php echo base_url();?>index.php/api/setrole/<?php echo $value['id'];?>/0">取消管理员</a>
+                <a href="<?php echo base_url();?>index.php/api/setrole/<?php echo $value['id'];?>/1">取消管理员</a>
                     <a href="<?php echo base_url();?>index.php/api/userdelete/<?php echo $value['id'];?>">删除</a>
                 </td>
             <?php }?>
 		</tr>
         <?php $i++ ?> 
 		<?php } endforeach; ?>
-	</table>
+    </table>
+    
 	<div class="pager-block">
         <ul class="pager">
             <?php if($current > 1) {?> 

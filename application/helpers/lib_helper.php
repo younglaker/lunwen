@@ -5,7 +5,14 @@ if( ! function_exists('is_login') )
     {
         $CI =& get_instance();
         $user_info = $CI->session->all_userdata();
-        return $user_info;
+        foreach ($user_info as $key => $value) 
+        {
+            if($key === 'id')
+            {
+                return TRUE;
+                break;
+            }
+        }
     }
 
 }

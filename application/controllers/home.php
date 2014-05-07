@@ -47,7 +47,7 @@
         $data['img'] = $base_url."res/img";
         // $data['upload']['event'] 	= $base_url."res/upload/event/";
         // $data['upload']['user'] 	= $base_url."res/upload/user/";
-
+        $data = $this->set_user_info($data);
         $this->load->view("common/header.php", $data);
         $this->load->view('index', $data);
         $this->load->view("common/footer.php", $data);
@@ -69,9 +69,23 @@
         $data['js'] = $base_url."res/js";
         $data['img'] = $base_url."res/img";
         
+        $data = $this->set_user_info($data);
         $this->load->view("common/header.php", $data);
         $this->load->view('login', $data);
         $this->load->view("common/footer.php", $data);
+    }
+
+    /**
+     * 注册管理类
+     *
+     * @return void
+     **/
+
+    function logout()
+    {
+        $user_info = array('name' => '','id' => '','role' => '');
+        $this->session->unset_userdata($user_info);
+        redirect('home');
     }
 
     /**
@@ -108,6 +122,7 @@
         $data['js'] = $base_url."res/js";
         $data['img'] = $base_url."res/img";
 
+        $data = $this->set_user_info($data);
         $this->load->view("common/header.php", $data);
         $this->load->view('list', $data);
         $this->load->view("common/footer.php", $data);
@@ -126,14 +141,10 @@
         $data['js'] = $base_url."res/js";
         $data['img'] = $base_url."res/img";
 
+        $data = $this->set_user_info($data);
         $this->load->view("common/header.php", $data);
         $this->load->view('paper', $data);
         $this->load->view("common/footer.php", $data);
-    }
-
-    function formsuccess($data)
-    {
-      $this->load->view('formsuccess',$data); 
     }
 
     /**
@@ -148,6 +159,7 @@
         $data['js'] = $base_url."res/js";
         $data['img'] = $base_url."res/img";
 
+        $data = $this->set_user_info($data);
         $this->load->view("common/header.php", $data);
         $this->load->view('user_home', $data);
         $this->load->view("common/footer.php", $data);
@@ -176,11 +188,17 @@
           break;
 
         }
-  }
-
-  private function redirectUrl($location)
-  {
+    }
+    private function set_user_info($data)
+    {
+        $data['uid'] = $this->session->userdata("id");
+        $data['name'] = $this->session->userdata("name");
+        $data['role'] = $this->session->userdata("role");
+        return $data; 
+    }    
+    private function redirectUrl($location)
+    {
         return base_url()."index.php/home/".$location;
-  }
+    }
 
 }

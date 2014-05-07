@@ -36,6 +36,7 @@ class Admin extends CI_Controller {
         $data['js'] = $base_url."res/js";
         $data['img'] = $base_url."res/img";
 
+        $data = $this->set_user_info($data);
         $this->load->view("common/header.php", $data);
         $this->load->view('admin_paper', $data);
         $this->load->view("common/footer.php", $data);
@@ -52,7 +53,9 @@ class Admin extends CI_Controller {
         $data['js'] = $base_url."res/js";
         $data['img'] = $base_url."res/img";
         $data['userlist'] = $this->admin_model->getUserList( $this->uid,$page );
+        
         $data['current'] = $page;
+        $data = $this->set_user_info($data);
         $this->load->view("common/header.php", $data);
         $this->load->view('admin_users', $data);
         $this->load->view("common/footer.php", $data);
@@ -69,6 +72,7 @@ class Admin extends CI_Controller {
         $data['js'] = $base_url."res/js";
         $data['img'] = $base_url."res/img";
 
+        $data = $this->set_user_info($data);
         $this->load->view("common/header.php", $data);
         $this->load->view('admin_approval', $data);
         $this->load->view("common/footer.php", $data);
@@ -85,9 +89,17 @@ class Admin extends CI_Controller {
         $data['js'] = $base_url."res/js";
         $data['img'] = $base_url."res/img";
 
+        $data = $this->set_user_info($data);
         $this->load->view("common/header.php", $data);
         $this->load->view('admin_upload', $data);
         $this->load->view("common/footer.php", $data);
     }
-
+    
+    private function set_user_info($data)
+    {
+        $data['uid'] = $this->session->userdata("id");
+        $data['name'] = $this->session->userdata("name");
+        $data['role'] = $this->session->userdata("role");
+        return $data; 
+    }  
 }
