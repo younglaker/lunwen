@@ -8,6 +8,7 @@ class api extends CI_Controller
         parent::__construct();
         date_default_timezone_set('PRC');
         $this->load->helper('url');
+        $this->load->helper('form');
         $this->load->library('session');
         $this->load->model('api_model');
         $this->load->model('admin_model');
@@ -169,6 +170,107 @@ class api extends CI_Controller
             show_404();
         } 
     }
+
+    /**
+     * upload paper
+     *
+     */
+
+    public function do_upload()
+    {
+        $title = $this->input->post('title');
+        $author = $this->input->post('author');
+        $teacher = $this->input->post('teacher');
+        $school = $this->input->post('school');
+        $college = $this->input->post('college');
+        $career = $this->input->post('career');
+        $catage = $this->input->post('catage');
+        $description = $this->input->post('description');
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png|doc|docx|ppt|pptx|excel';
+        $this->load->library('upload', $config);
+        if ( ! $this->upload->do_upload('attachment') )
+        {
+            $error = array('error' => $this->upload->display_errors());
+        }
+        else
+        {
+            $data = array('upload_data' => $this->upload->data());
+            $attachment = "uploads/".$data['upload_data']['client_name'];
+            if( $this->isAdmin() )
+            {
+                $status = 1;
+            } 
+            else 
+            {
+                $status = '';
+            }
+            $data = array(
+                'title' => $title,
+                'author' => $author,
+                'leader' => $teacher,
+                'university' => $school,
+                'college' => $college,
+                'specialty' => $career,
+                'research' => $catage,
+                'attachment' => $attachment,
+                'summary' => $description,
+                'publisher_id' => $this->uid,
+                'status' => $status
+            );
+            $this->api_model->doUpload($data);
+            redirect('admin/paper');
+        }
+    }
+
+    /**
+     *userdelete api
+     */
+    public function paperdelete($pid)
+    {
+        if( $this->isAdmin() )
+        {
+            if( $this->admin_model->paperDelete($pid) )
+            {
+                redirect('admin/paper');
+            }
+            else
+            {
+                redirect('home/erro');
+            }
+        }  
+        else
+        {
+            show_404();
+        } 
+    }
+
+    /**
+     * set user role
+     *
+     */
+    public function paperpub($uid,$status) {
+
+        if( $this->isAdmin() )
+        {
+            $data = array(
+                'status' => $status
+            );
+            if( $this->admin_model->paperUpdate( $uid,$data ) )
+            {
+                redirect('admin/paper');
+            }
+            else
+            {
+                redirect('home/erro');
+            }
+        }  
+        else
+        {
+            show_404();
+        } 
+    }
+
 
     private function isRegister($data)
     {

@@ -26,7 +26,7 @@
             <?php if( $value['role'] < 2 ) {?>
                 <td>普通用户</td>
                 <td class="">
-                <a href="<?php echo base_url();?>index.php/api/setrole/<?php echo $value['id'];?>/2">设为管理员</a>
+                    <a href="<?php echo base_url();?>index.php/api/setrole/<?php echo $value['id'];?>/2">设为管理员</a>
                     <a href="<?php echo base_url();?>index.php/api/userdelete/<?php echo $value['id'];?>">删除</a>
                 </td>
             <?php } else {?>
@@ -43,15 +43,20 @@
     
 	<div class="pager-block">
         <ul class="pager">
-            <?php if($current > 1) {?> 
-                <li><a href="<?php echo base_url();?>index.php/admin/users/<?php echo $current - 1;?>">上一页</a></li>
-            <?php } ?>
-            <?php for($i = 1; $i <= $userlist[0]['total']; $i++) {?>
-                <li><a href="<?php echo base_url();?>index.php/admin/users/<?php echo $i;?>" <?php if($i == $current) {?>class="act"<?php }?> > <?php echo $i;?></a></li>
-            <?php }?>
-            <?php if($current < $userlist[0]['total']) {?> 
-                <li><a href="<?php echo base_url();?>index.php/admin/users/<?php echo $current + 1;?>">下一页</a></li>
-            <?php } ?>
+            <?php 
+                if(!empty($userlist)) {
+                    if($current > 1) {?> 
+                    <li><a href="<?php echo base_url();?>index.php/admin/users/<?php echo $current - 1;?>">上一页</a></li>
+                <?php } ?>
+                <?php for($i = 1; $i <= $userlist[0]['total']; $i++) {?>
+                    <li><a href="<?php echo base_url();?>index.php/admin/users/<?php echo $i;?>" <?php if($i == $current) {?>class="act"<?php }?> > <?php echo $i;?></a></li>
+                <?php }?>
+                <?php if($current < $userlist[0]['total']) {?> 
+                    <li><a href="<?php echo base_url();?>index.php/admin/users/<?php echo $current + 1;?>">下一页</a></li>
+                <?php 
+                }
+            } 
+            ?>
 		</ul>
 	</div>
 </div>

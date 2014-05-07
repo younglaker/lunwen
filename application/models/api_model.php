@@ -18,6 +18,12 @@ class Api_model extends CI_Model
         return $this->db->insert('p_user',$data);
     }
 
+    public function doUpload($data)
+    {
+
+        return $this->db->insert('thesis',$data);
+    }
+
     public function doLogin($data)
     {
         $sql = "SELECT id FROM p_user WHERE name = ? AND password = ?";
@@ -25,6 +31,7 @@ class Api_model extends CI_Model
         $res = $query->result_array();
         return count( $res ) > 0 ? TRUE:FALSE;
     }
+
     public function getUserInfoByname($name)
     {
         $sql = "SELECT id,name,role FROM p_user WHERE name = ?";

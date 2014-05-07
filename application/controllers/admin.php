@@ -28,14 +28,15 @@ class Admin extends CI_Controller {
     /**
     * 管理论文
     **/
-    public function paper()
+    public function paper($page = 1)
     {
         $base_url = base_url();
         $data['base_url'] = $base_url."index.php";
         $data['css'] = $base_url."res/css";
         $data['js'] = $base_url."res/js";
         $data['img'] = $base_url."res/img";
-
+        $data['paperlist'] = $this->admin_model->getPaperList( $this->uid,$page,1);
+        $data['current'] = $page;
         $data = $this->set_user_info($data);
         $this->load->view("common/header.php", $data);
         $this->load->view('admin_paper', $data);
@@ -64,7 +65,7 @@ class Admin extends CI_Controller {
     /**
      * 审批论文
      **/
-    function approval()
+    function approval($page = 1)
     {
         $base_url = base_url();
         $data['base_url'] = $base_url."index.php";
@@ -72,6 +73,8 @@ class Admin extends CI_Controller {
         $data['js'] = $base_url."res/js";
         $data['img'] = $base_url."res/img";
 
+        $data['current'] = $page;
+        $data['paperlist'] = $this->admin_model->getPaperList( $this->uid,$page,0);
         $data = $this->set_user_info($data);
         $this->load->view("common/header.php", $data);
         $this->load->view('admin_approval', $data);

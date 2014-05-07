@@ -11,7 +11,7 @@
         </form>
 	</div>
 
-	<p class="mrg-top-10"><a href="" class="a-btn-lg">上传新论文</a></p>
+	<p class="mrg-top-10"><a href="<?php echo base_url();?>index.php/admin/upload" class="a-btn-lg">上传新论文</a></p>
 
 	<table class="list-ctx-block">
 		<tr>
@@ -22,29 +22,36 @@
 			<th class="list-paper-download">操作</th>
 		</tr>
 
-		<?php for($n=1;$n!=8;$n++): ?>
+		<?php $i = 1; foreach( $paperlist as $key => $value ): {?>
 		<tr>
-			<td class="list-paper-num"><?php echo $n; ?></td>
-			<td class="list-paper-serial">I980.110</td>
-			<td class="list-paper-title"><a href="">前端性能优化（Application Cache篇</a></td>
-			<td class="list-paper-author">王小二</td>
+			<td class="list-paper-num"><?php echo $i; ?></td>
+            <td class="list-paper-serial"><?php echo $value['number'];?></td>
+            <td class="list-paper-title"><a href="<?php echo base_url().'/'.$value['attachment'];?>"><?php echo $value['title'];?></a></td>
+            <td class="list-paper-author"><?php echo $value['name']; ?></td>
 			<td class="list-paper-deal">
 				<a href="">编辑</a>
-				<a href="">删除</a>
+                <a href="<?php echo base_url();?>index.php/api/paperdelete/<?php echo $value['id'];?>">删除</a>
 			</td>
 		</tr>
-		<?php endfor; ?>
+        <?php $i++ ?> 
+		<?php } endforeach; ?>
 	</table>
 
 	<div class="pager-block">
-		<ul class="pager">
-			<li><a href="">上一页</a></li>
-			<li><a href="" class="act">1</a></li>
-			<li><a href="">2</a></li>
-			<li><a href="">3</a></li>
-			<li><a href="">4</a></li>
-			<li><a href="">5</a></li>
-			<li><a href="">下一页</a></li>
+        <ul class="pager">
+            <?php
+                if(!empty($paperlist)) {
+                    if($current > 1) {?> 
+                        <li><a href="<?php echo base_url();?>index.php/admin/paper/<?php echo $current - 1;?>">上一页</a></li>
+                    <?php } ?>
+                    <?php for($i = 1; $i <= $paperlist[0]['total']; $i++) {?>
+                        <li><a href="<?php echo base_url();?>index.php/admin/paper/<?php echo $i;?>" <?php if($i == $current) {?>class="act"<?php }?> > <?php echo $i;?></a></li>
+                    <?php }?>
+                    <?php if($current < $paperlist[0]['total']) {?> 
+                        <li><a href="<?php echo base_url();?>index.php/admin/paper/<?php echo $current + 1;?>">下一页</a></li>
+                    <?php } 
+                }
+            ?>
 		</ul>
 	</div>
 </div>
