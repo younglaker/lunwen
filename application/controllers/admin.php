@@ -13,21 +13,14 @@ class Admin extends CI_Controller {
         $this->load->library('session');
         $this->uid = $this->session->userdata('id');
         $this->urole = $this->session->userdata('role');
-        // $this->load->model('lh_model');
-        // $this->load->model('org_model');
-        // $this->load->model('event_model');
-        // $this->load->model('people_model');
-        // $this->load->library('pagination');
-
-        // 载入用户验证类
-        // $this->load->library('account');
-        // $this->userInfo['uid'] 		= $this->account->get_uid();
-        // $this->userInfo['uname'] 	= $this->account->get_name();
     }
 
     /**
-    * 管理论文
-    **/
+     * manage paper page
+     * @param number
+     * @return void
+     */
+
     public function paper($page = 1)
     {
 
@@ -48,7 +41,9 @@ class Admin extends CI_Controller {
     }
 
     /**
-     * 管理用户
+     * manage user page
+     * @param number
+     * @return void
      **/
     function users($page = 1)
     {
@@ -72,7 +67,9 @@ class Admin extends CI_Controller {
     }
 
     /**
-     * 审批论文
+     * approval paper page
+     * @param number
+     * @return void
      **/
     function approval($page = 1)
     {
@@ -97,8 +94,9 @@ class Admin extends CI_Controller {
     }
 
     /**
-     * 上传论文
-     **/
+     * upload paper page
+     * @return void
+     */
     function upload()
     {
         
@@ -119,9 +117,10 @@ class Admin extends CI_Controller {
     }
 
     /**
-     * 编辑论文
-     * 
-     **/
+     * edit paper
+     * @param number 
+     * @return void 
+     */
 
     function edit($pid)
     {

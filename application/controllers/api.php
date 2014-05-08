@@ -100,8 +100,9 @@ class api extends CI_Controller
     }
 
     /**
-    *userdelete api
-    */
+     * userdelete api
+     *
+     */
     public function userdelete($uid)
     {
         if( $this->isAdmin() )
@@ -229,18 +230,20 @@ class api extends CI_Controller
         if( !is_login() ) show_404();
         $title = $this->input->post('title');
         $author = $this->input->post('author');
+        $number = $this->input->post('number');
         $teacher = $this->input->post('teacher');
         $school = $this->input->post('school');
         $college = $this->input->post('college');
         $career = $this->input->post('career');
         $catage = $this->input->post('catage');
         $description = $this->input->post('description');
+        $status = $this->input->post('publish');
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'gif|jpg|png|doc|docx|ppt|pptx|excel';
         $this->load->library('upload', $config);
-        $status = $this->isAdmin() ? 1 : 0;
         $data = array(
             'title' => $title,
+            'number' => $number,
             'author' => $author,
             'leader' => $teacher,
             'university' => $school,
