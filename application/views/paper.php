@@ -41,7 +41,7 @@
 				<dt>研究方向：</dt>
 				<dd><?php echo $paper[0]['research']; ?></dd>
 				<dt>发布时间：</dt>
-				<dd>2010-2-7</dd>
+				<dd><?php echo date("Y-m-d",strtotime($paper[0]['time'])); ?></dd>
 			</dl>
 			<h2 class="paper-sub-title">关键词：</h2>
 			<div class="paper-keywords">低气压； 辉光放电； 等离子体； 电子密度； 数值模拟；</div>

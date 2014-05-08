@@ -154,6 +154,8 @@
 		$uid = $data['uid'];	// 当前登录用户id
 		$paper = $this->home_model->getPaper($pid, $uid);
 		$data['paper'] = $paper;
+
+		$this->home_model->updateclick($pid);	// 点击量++
 		
 		$this->load->view("common/header.php", $data);
 		$this->load->view('paper', $data);

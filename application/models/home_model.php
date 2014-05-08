@@ -10,7 +10,7 @@ class Home_model extends CI_Model {
 	*/
 	public function getNewPaper($count)
 	{
-		$sql = "SELECT * FROM thesis LIMIT ?";
+		$sql = "SELECT * FROM thesis ORDER BY time DESC LIMIT ?";
 		$query = $this->db->query($sql, array($count));
 		return $query->result_array();
 	}
@@ -20,7 +20,7 @@ class Home_model extends CI_Model {
 	*/
 	public function getHotPaper($count)
 	{
-		$sql = "SELECT * FROM thesis LIMIT ?";
+		$sql = "SELECT * FROM thesis ORDER BY click DESC LIMIT ?";
 		$query = $this->db->query($sql, array($count));
 		return $query->result_array();
 	}
@@ -34,5 +34,19 @@ class Home_model extends CI_Model {
 		$sql = "SELECT * FROM thesis WHERE id = ? AND (status = 1 OR publisher_id = ?)";
 		$query = $this->db->query($sql, array($pid, $uid));
 		return $query->result_array();
+	}
+
+	/*
+	* 点击量+1
+	*/
+	public function updateclick($pid)
+	{
+		$sql = "SELECT click FROM thesis WHERE id = ?";
+		$query = $this->db->query($sql, array($pid));
+		$result = $query->result_array();
+		$click = ++$result[0]['click'];
+
+		$sql = "UPDATE thesis SET click = ? WHERE id = ?";
+		$query = $this->db->query($sql, array($click, $pid));
 	}
 }
