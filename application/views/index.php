@@ -15,15 +15,19 @@
 	<div class="recommend-block">
 		<ul class="recommend-list">
 			<h2><span>最新论文</span></h2>
-			<?php for($n=0;$n!=8;$n++): ?>
-			<li><a href="">论文标题论文标题论文标题论文标题论文标题论文标题论文标题论文标题</a></li>
+			<?php 
+				$count = count($newpaper);
+				for($n=0;$n < $count;$n++): ?>
+			<li><a href="<?php echo base_url('index.php/home/paper\/').$newpaper[$n]['id']; ?>"><?php echo $newpaper[$n]['title']; ?></a></li>
 			<?php endfor; ?>
 		</ul>
 
 		<ul class="recommend-list">
 			<h2><span>最热论文</span></h2>
-			<?php for($n=0;$n!=8;$n++): ?>
-			<li><a href="">论文标题论文标题论文标题论文标题</a></li>
+			<?php 
+				$count = count($hotpaper);
+				for($n=0;$n < $count;$n++): ?>
+			<li><a href="<?php echo base_url('index.php/home/paper\/').$hotpaper[$n]['id']; ?>"><?php echo $hotpaper[$n]['title']; ?></a></li>
 			<?php endfor; ?>
 		</ul>
 	</div>

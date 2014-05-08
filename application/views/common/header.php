@@ -14,7 +14,7 @@
 <div class="naver">
 	<div class="container">
     	<div class="naver-brand">
-        	<a href="./">论文库</a>
+        	<a href="<?php echo base_url(); ?>">论文库</a>
         </div>
         <div class="naver-sub">
         <?php if( !$uid ) { ?>
