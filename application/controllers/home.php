@@ -111,6 +111,7 @@
 		$data['js'] = $base_url."res/js";
 		$data['img'] = $base_url."res/img";
 		
+		$data = $this->set_user_info($data);
 		$this->load->view("common/header.php", $data);
 		$this->load->view('regist', $data);
 		$this->load->view("common/footer.php", $data);

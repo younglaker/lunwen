@@ -24,6 +24,13 @@ class Api_model extends CI_Model
         return $this->db->insert('thesis',$data);
     }
 
+    public function doUpdate($pid,$data)
+    {
+
+        $this->db->where('id', $pid);
+        $this->db->update('thesis', $data);
+    }
+
     public function doLogin($data)
     {
         $sql = "SELECT id FROM p_user WHERE name = ? AND password = ?";

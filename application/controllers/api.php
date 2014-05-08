@@ -180,6 +180,7 @@ class api extends CI_Controller
 
     public function do_upload()
     {
+        if( !is_login() ) show_404();
         $title = $this->input->post('title');
         $author = $this->input->post('author');
         $teacher = $this->input->post('teacher');
@@ -200,14 +201,7 @@ class api extends CI_Controller
         {
             $data = array('upload_data' => $this->upload->data());
             $attachment = "uploads/".$data['upload_data']['client_name'];
-            if( $this->isAdmin() )
-            {
-                $status = 1;
-            } 
-            else 
-            {
-                $status = '';
-            }
+            $status = $this->isAdmin() ? 1 : 0;
             $data = array(
                 'title' => $title,
                 'author' => $author,
@@ -225,6 +219,53 @@ class api extends CI_Controller
             redirect('admin/paper');
         }
     }
+
+    /**
+     * update paper
+     *
+     */
+    public function do_update($pid)
+    {
+        if( !is_login() ) show_404();
+        $title = $this->input->post('title');
+        $author = $this->input->post('author');
+        $teacher = $this->input->post('teacher');
+        $school = $this->input->post('school');
+        $college = $this->input->post('college');
+        $career = $this->input->post('career');
+        $catage = $this->input->post('catage');
+        $description = $this->input->post('description');
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png|doc|docx|ppt|pptx|excel';
+        $this->load->library('upload', $config);
+        $status = $this->isAdmin() ? 1 : 0;
+        $data = array(
+            'title' => $title,
+            'author' => $author,
+            'leader' => $teacher,
+            'university' => $school,
+            'college' => $college,
+            'specialty' => $career,
+            'research' => $catage,
+            'summary' => $description,
+            'publisher_id' => $this->uid,
+            'status' => $status
+        );
+        if ( ! $this->upload->do_upload('attachment') )
+        {
+            $error = array('error' => $this->upload->display_errors());
+        }
+        else
+        {
+            $data = array('upload_data' => $this->upload->data());
+            $attachment = "uploads/".$data['upload_data']['client_name'];
+            $data['attachment'] = $attachement;
+        }
+
+        $this->api_model->doUpdate($pid,$data);
+        redirect('admin/paper');
+    }
+
 
     /**
      *userdelete api
