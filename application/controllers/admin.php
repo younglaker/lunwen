@@ -30,6 +30,10 @@ class Admin extends CI_Controller {
     **/
     public function paper($page = 1)
     {
+
+        if( !$this->isAdmin() || !is_login() ) {
+            redirect('home');
+        }
         $base_url = base_url();
         $data['base_url'] = $base_url."index.php";
         $data['css'] = $base_url."res/css";
@@ -48,6 +52,11 @@ class Admin extends CI_Controller {
      **/
     function users($page = 1)
     {
+
+        if( !$this->isAdmin() || !is_login() ) 
+        {
+            redirect('home');
+        }
         $base_url = base_url();
         $data['base_url'] = $base_url."index.php";
         $data['css'] = $base_url."res/css";
@@ -67,6 +76,12 @@ class Admin extends CI_Controller {
      **/
     function approval($page = 1)
     {
+
+
+        if( !$this->isAdmin() || !is_login() ) 
+        {
+            redirect('home');
+        }
         $base_url = base_url();
         $data['base_url'] = $base_url."index.php";
         $data['css'] = $base_url."res/css";
@@ -86,6 +101,11 @@ class Admin extends CI_Controller {
      **/
     function upload()
     {
+        
+        if( !is_login() ) 
+        {
+            redirect('home');
+        }
         $base_url = base_url();
         $data['base_url'] = $base_url."index.php";
         $data['css'] = $base_url."res/css";
@@ -104,5 +124,18 @@ class Admin extends CI_Controller {
         $data['name'] = $this->session->userdata("name");
         $data['role'] = $this->session->userdata("role");
         return $data; 
-    }  
+    }
+
+    private function isAdmin()
+    {
+        if( $this->uid !== NULL && $this->urole > 1 )
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
 }

@@ -17,7 +17,7 @@ class api extends CI_Controller
     }
 
     /**
-     *login api
+     * login api
      */
     public function login()
     {
@@ -27,7 +27,7 @@ class api extends CI_Controller
                 'name' => $this->input->post('username'),
                 'password' => $this->input->post('password')
             );
-            if( $data['name'] !="" && $data['password'] !="" )
+            if( $data['name'] != "" && $data['password'] != "" )
             {
                 if( $this->api_model->doLogin( $data ) )
                 {
@@ -38,10 +38,12 @@ class api extends CI_Controller
                     }
                     switch( $userInfo[0]['role'] )
                     {
-                        case 0:
-                            redirect('home');
-                        break;
                         case 1:
+                            redirect('home/homepage');
+                        break;
+                        case 2:
+                            redirect('admin/paper');
+                        case 3:
                             redirect('admin/paper');
                         break;
                     }
@@ -192,6 +194,7 @@ class api extends CI_Controller
         if ( ! $this->upload->do_upload('attachment') )
         {
             $error = array('error' => $this->upload->display_errors());
+            var_dump($error);
         }
         else
         {
@@ -279,7 +282,7 @@ class api extends CI_Controller
 
     private function isAdmin()
     {
-        if( $this->uid !== NULL && $this->urole !== '1' )
+        if( $this->uid !== NULL && $this->urole > 1 )
         {
             return TRUE;
         }
