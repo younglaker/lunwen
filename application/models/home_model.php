@@ -53,4 +53,54 @@ class Home_model extends CI_Model {
 		$query  = $this->db->query($sql);
 		return $query->result_array();
 	}
+
+	/**
+	 *  获取所有学校的名称
+	 */
+	public function getSchoolName()
+	{
+		$sql = "SELECT DISTINCT university FROM thesis";
+		$query = $this->db->query($sql);
+		return $query->result_array();
+	}
+
+	/**
+	 *  获取所有研究方向
+	 */
+	public function getResearch()
+	{
+		$sql = "SELECT DISTINCT research FROM thesis";
+		$query = $this->db->query($sql);
+		return $query->result_array();
+	}
+
+	/**
+	 *  获取所有专业
+	 */
+	public function getSpecialty()
+	{
+		$sql = "SELECT DISTINCT specialty FROM thesis";
+		$query = $this->db->query($sql);
+		return $query->result_array();
+	}
+
+	/**
+	 *  本人发布论文
+	 */
+	public function selfPublish($user_name)
+	{
+		$sql = "SELECT * FROM thesis WHERE author = ?";
+		$query = $this->db->query($sql, array($user_name));
+		return $query->result_array();
+	}
+
+	/**
+	 *  本人收藏论文
+	 */
+	public function selfCollect($user_id)
+	{
+		$sql = "SELECT * FROM thesis AS t WHERE t.id = (SELECT c.p_id FROM collect_paper AS c WHERE c.u_id = ? ) ";
+		$query = $this->db->query($sql, array($user_id));
+		return $query->result_array();
+	}
 }

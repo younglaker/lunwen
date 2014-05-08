@@ -129,8 +129,19 @@
 		$data['css'] = $base_url."res/css";
 		$data['js'] = $base_url."res/js";
 		$data['img'] = $base_url."res/img";
+
 		$lister = $this->home_model->getLister( $page );
 		$data['lister'] = $lister;
+
+		$university = $this->home_model->getSchoolName( $page );
+		$data['university'] = $university;
+
+		$research = $this->home_model->getResearch( $page );
+		$data['research'] = $research;
+
+		$specialty = $this->home_model->getSpecialty( $page );
+		$data['specialty'] = $specialty;
+
 		$data['current'] = $page;
 		$data = $this->set_user_info($data);
 		// e($data);
@@ -177,6 +188,16 @@
 		$data['img'] = $base_url."res/img";
 
 		$data = $this->set_user_info($data);
+
+		$user_name = $data['name'];
+		$user_id = $data['uid'];
+
+		$selfPublish = $this->home_model->selfPublish($user_name);
+		$data['selfPublish'] = $selfPublish;
+
+		$selfCollect = $this->home_model->selfCollect($user_id);
+		$data['selfCollect'] = $selfCollect;
+		
 		$this->load->view("common/header.php", $data);
 		$this->load->view('user_home', $data);
 		$this->load->view("common/footer.php", $data);

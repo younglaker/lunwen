@@ -7,15 +7,26 @@
 			<li><a href="">研究方向</a></li>
 		</ul>
 		<form class="search-block" action="">
-            <input type="text" class="search-input-ctx" name="q" autocomplete="off" spellcheck="false" placeholder="搜索论文、作者">
-            <button class="btn-search" type="submit">搜索</button>
-        </form>
+            			<input type="text" class="search-input-ctx" name="q" autocomplete="off" spellcheck="false" placeholder="搜索论文、作者">
+            			<button class="btn-search" type="submit">搜索</button>
+        		</form>
 	</div>
 
 	<div class="list-classify-block">
-		<?php for($n=0;$n!=8;$n++): ?>
-		<a href="">D.等离子物理运用</a></li>
-		<?php endfor; ?>
+		<?php foreach ($university as $key => $value) {
+		?>
+		<a href=""><?= $value['university']?></a></li>
+		<?php }; ?>
+
+<!-- 		<?php foreach ($research as $key => $value) {
+		?>
+		<a href=""><?= $value['research']?></a></li>
+		<?php }; ?>
+
+		<?php foreach ($specialty as $key => $value) {
+		?>
+		<a href=""><?= $value['specialty']?></a></li>
+		<?php }; ?> -->
 	</div>
 
 	<table class="list-ctx-block">
