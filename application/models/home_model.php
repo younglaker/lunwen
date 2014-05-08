@@ -35,4 +35,22 @@ class Home_model extends CI_Model {
 		$query = $this->db->query($sql, array($pid, $uid));
 		return $query->result_array();
 	}
+
+	/*
+	* 获取全部论文
+	*/
+	public function getLister($page)
+	{
+		$pagesize = 10;
+		$sql = "SELECT COUNT(id) AS num FROM thesis";
+		$query = $this->db->query($sql);
+		$result = $query->result_array();
+		$offset = ($page-1)*$pagesize;
+		$count = count($result)>0 ? $result[0]['num'] : 1;
+		$total = ceil($count/$pagesize);
+		// 此处不需要传入参数，获取所以得论文信息
+		$sql = "SELECT *,'$total' AS total FROM thesis ORDER BY id DESC LIMIT $offset,$pagesize";
+		$query  = $this->db->query($sql);
+		return $query->result_array();
+	}
 }

@@ -122,15 +122,18 @@
 	 *
 	 * @return void
 	 **/
-	function lister()
+	function lister( $page = 1)
 	{
 		$base_url = base_url();
 		$data['base_url'] = $base_url."index.php";
 		$data['css'] = $base_url."res/css";
 		$data['js'] = $base_url."res/js";
 		$data['img'] = $base_url."res/img";
-
+		$lister = $this->home_model->getLister( $page );
+		$data['lister'] = $lister;
+		$data['current'] = $page;
 		$data = $this->set_user_info($data);
+		// e($data);
 		$this->load->view("common/header.php", $data);
 		$this->load->view('list', $data);
 		$this->load->view("common/footer.php", $data);
