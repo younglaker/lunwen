@@ -30,6 +30,10 @@ class Admin extends CI_Controller {
     **/
     public function paper($page = 1)
     {
+
+        if( !$this->isAdmin() || !is_login() ) {
+            redirect('home');
+        }
         $base_url = base_url();
         $data['base_url'] = $base_url."index.php";
         $data['css'] = $base_url."res/css";
@@ -48,6 +52,11 @@ class Admin extends CI_Controller {
      **/
     function users($page = 1)
     {
+
+        if( !$this->isAdmin() || !is_login() ) 
+        {
+            redirect('home');
+        }
         $base_url = base_url();
         $data['base_url'] = $base_url."index.php";
         $data['css'] = $base_url."res/css";
@@ -67,6 +76,12 @@ class Admin extends CI_Controller {
      **/
     function approval($page = 1)
     {
+
+
+        if( !$this->isAdmin() || !is_login() ) 
+        {
+            redirect('home');
+        }
         $base_url = base_url();
         $data['base_url'] = $base_url."index.php";
         $data['css'] = $base_url."res/css";
@@ -86,6 +101,11 @@ class Admin extends CI_Controller {
      **/
     function upload()
     {
+        
+        if( !is_login() ) 
+        {
+            redirect('home');
+        }
         $base_url = base_url();
         $data['base_url'] = $base_url."index.php";
         $data['css'] = $base_url."res/css";
@@ -97,12 +117,49 @@ class Admin extends CI_Controller {
         $this->load->view('admin_upload', $data);
         $this->load->view("common/footer.php", $data);
     }
-    
+
+    /**
+     * 编辑论文
+     * 
+     **/
+
+    function edit($pid)
+    {
+        
+        if( !is_login() ) 
+        {
+            redirect('home');
+        }
+        $base_url = base_url();
+        $data['base_url'] = $base_url."index.php";
+        $data['css'] = $base_url."res/css";
+        $data['js'] = $base_url."res/js";
+        $data['img'] = $base_url."res/img";
+        $data['paper'] = $this->admin_model->getPaper($pid);
+        $data = $this->set_user_info($data);
+        $this->load->view("common/header.php", $data);
+        $this->load->view('admin_edit', $data);
+        $this->load->view("common/footer.php", $data);
+    }
+
     private function set_user_info($data)
     {
         $data['uid'] = $this->session->userdata("id");
         $data['name'] = $this->session->userdata("name");
         $data['role'] = $this->session->userdata("role");
         return $data; 
-    }  
+    }
+
+    private function isAdmin()
+    {
+        if( $this->uid !== NULL && $this->urole > 1 )
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
 }

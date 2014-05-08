@@ -1,5 +1,5 @@
 <div id="main">
-<form action="<?php echo base_url();?>/index.php/api/login" id="login-form" class="log-reg-form" method="post">
+<form action="<?php echo base_url();?>index.php/api/login" id="login-form" class="log-reg-form" method="post">
 		<p>
 			<label for="login-name">用户名</label>
 			<input type="text" class="input-txt" id="login-name" name="username">

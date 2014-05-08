@@ -7,15 +7,26 @@
 			<li><a href="">研究方向</a></li>
 		</ul>
 		<form class="search-block" action="">
-            <input type="text" class="search-input-ctx" name="q" autocomplete="off" spellcheck="false" placeholder="搜索论文、作者">
-            <button class="btn-search" type="submit">搜索</button>
-        </form>
+            			<input type="text" class="search-input-ctx" name="q" autocomplete="off" spellcheck="false" placeholder="搜索论文、作者">
+            			<button class="btn-search" type="submit">搜索</button>
+        		</form>
 	</div>
 
 	<div class="list-classify-block">
-		<?php for($n=0;$n!=8;$n++): ?>
-		<a href="">D.等离子物理运用</a></li>
-		<?php endfor; ?>
+		<?php foreach ($university as $key => $value) {
+		?>
+		<a href=""><?= $value['university']?></a></li>
+		<?php }; ?>
+
+<!-- 		<?php foreach ($research as $key => $value) {
+		?>
+		<a href=""><?= $value['research']?></a></li>
+		<?php }; ?>
+
+		<?php foreach ($specialty as $key => $value) {
+		?>
+		<a href=""><?= $value['specialty']?></a></li>
+		<?php }; ?> -->
 	</div>
 
 	<table class="list-ctx-block">
@@ -27,26 +38,36 @@
 			<th class="list-paper-download">下载</th>
 		</tr>
 
-		<?php for($n=1;$n!=8;$n++): ?>
+		<?php  foreach ($lister as $key => $value)
+		 {
+			
+		?>
 		<tr>
-			<td class="list-paper-num"><?php echo $n; ?></td>
-			<td class="list-paper-serial">I980.110</td>
-			<td class="list-paper-title"><a href="">前端性能优化（Application Cache篇</a></td>
-			<td class="list-paper-author">王小二</td>
+			<td class="list-paper-num"><?= $value['id'];?></td>
+			<td class="list-paper-serial"><?= $value['publisher_id'];?></td>
+			<td class="list-paper-title"><a href=""><?= $value['title'];?></a></td>
+			<td class="list-paper-author"><?= $value['author'];?></td>
 			<td class="list-paper-download"><a href=""></a></td>
 		</tr>
-		<?php endfor; ?>
+		<?php }; ?>
 	</table>
 
 	<div class="pager-block">
 		<ul class="pager">
-			<li><a href="">上一页</a></li>
-			<li><a href="" class="act">1</a></li>
-			<li><a href="">2</a></li>
-			<li><a href="">3</a></li>
-			<li><a href="">4</a></li>
-			<li><a href="">5</a></li>
-			<li><a href="">下一页</a></li>
+			<?php 
+                if(!empty($lister)) {
+                    if($current > 1) {?> 
+                    <li><a href="<?php echo base_url();?>index.php/home/lister/<?php echo $current - 1;?>">上一页</a></li>
+                <?php } ?>
+                <?php for($i = 1; $i <= $lister[0]['total']; $i++) {?>
+                    <li><a href="<?php echo base_url();?>index.php/home/lister/<?php echo $i;?>" <?php if($i == $current) {?>class="act"<?php }?> > <?php echo $i;?></a></li>
+                <?php }?>
+                <?php if($current < $lister[0]['total']) {?> 
+                    <li><a href="<?php echo base_url();?>index.php/home/lister/<?php echo $current + 1;?>">下一页</a></li>
+                <?php 
+                }
+            } 
+            ?>
 		</ul>
 	</div>
 </div>

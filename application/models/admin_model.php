@@ -56,6 +56,12 @@ class Admin_model extends CI_Model {
         $this->db->delete('thesis', array('id' => $pid));
         return TRUE;
     }
+    public function getPaper($pid)
+    {
+        $sql = "SELECT * FROM thesis WHERE id = ?";
+        $query = $this->db->query($sql,array($pid));
+        return $query->result_array();
+    }
     public function paperUpdate($pid,$data)
     {
         $this->db->where('id', $pid);
