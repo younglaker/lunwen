@@ -37,6 +37,20 @@ class Home_model extends CI_Model {
 	}
 
 	/*
+	* 点击量+1
+	*/
+	public function updateclick($pid)
+	{
+		$sql = "SELECT click FROM thesis WHERE id = ?";
+		$query = $this->db->query($sql, array($pid));
+		$result = $query->result_array();
+		$click = ++$result[0]['click'];
+
+		$sql = "UPDATE thesis SET click = ? WHERE id = ?";
+		$query = $this->db->query($sql, array($click, $pid));
+	}
+
+	/*
 	* 获取全部论文
 	*/
 	public function getLister($page)
