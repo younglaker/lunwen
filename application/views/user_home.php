@@ -11,17 +11,19 @@
 			<th class="list-paper-download">操作</th>
 		</tr>
 
-		<?php for($n=1;$n!=8;$n++): ?>
+		<?php foreach ($selfCollect as $key => $value) {
+			# code...
+		?>
 		<tr>
-			<td class="list-paper-num"><?php echo $n; ?></td>
-			<td class="list-paper-serial">I980.110</td>
-			<td class="list-paper-title"><a href="">前端性能优化（Application Cache篇</a></td>
-			<td class="list-paper-author">王小二</td>
+			<td class="list-paper-num"><?= $value['id'];?></td>
+			<td class="list-paper-serial"><?= $value['publisher_id'];?></td>
+			<td class="list-paper-title"><a href=""><?= $value['author'];?></a></td>
+			<td class="list-paper-author"><?= $value['id'];?></td>
 			<td class="list-paper-deal">
 				<a href="">取消收藏</a>
 			</td>
 		</tr>
-		<?php endfor; ?>
+		<?php }; ?>
 	</table>
 
 	<h2 class="mrg-top-20">我的上传</h2>
@@ -34,18 +36,20 @@
 			<th class="list-paper-download">操作</th>
 		</tr>
 
-		<?php for($n=1;$n!=8;$n++): ?>
+		<?php foreach ($selfPublish as $key => $value) {
+			# code...
+		 ?>
 		<tr>
-			<td class="list-paper-num"><?php echo $n; ?></td>
-			<td class="list-paper-serial">I980.110(没发布为无)</td>
-			<td class="list-paper-title"><a href="">前端性能优化（Application Cache篇</a></td>
-			<td class="list-paper-author">审核中（审核不通过/已发布）</td>
+			<td class="list-paper-num"><?= $value['id'];?></td>
+			<td class="list-paper-serial"><?= $value['publisher_id'];?></td>
+			<td class="list-paper-title"><a href=""><?= $value['title'];?></a></td>
+			<td class="list-paper-author"><?= $value['status'];?></td>
 			<td class="list-paper-deal">
 				<a href="">编辑</a>
 				<a href="">删除</a>
 			</td>
 		</tr>
-		<?php endfor; ?>
+		<?php }; ?>
 	</table>
 
 	<div class="pager-block">
