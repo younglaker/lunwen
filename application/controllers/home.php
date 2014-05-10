@@ -122,26 +122,34 @@
 	 *
 	 * @return void
 	 **/
-	function lister( $page = 1)
+	function lister( $location = 'all',$sec = '',$page = 1)
 	{
 		$base_url = base_url();
 		$data['base_url'] = $base_url."index.php";
 		$data['css'] = $base_url."res/css";
 		$data['js'] = $base_url."res/js";
 		$data['img'] = $base_url."res/img";
-
-		$lister = $this->home_model->getLister( $page );
-		$data['lister'] = $lister;
-
-		$university = $this->home_model->getSchoolName( $page );
-		$data['university'] = $university;
-
-		$research = $this->home_model->getResearch( $page );
-		$data['research'] = $research;
-
-		$specialty = $this->home_model->getSpecialty( $page );
-		$data['specialty'] = $specialty;
-
+        switch($location) {
+            case 'all':
+                $lister = $this->home_model->getLister($page,$location,$sec);
+                $item = '';
+                break;
+            case 'university':
+                $lister = $this->home_model->getLister($page,$location,$sec);
+                $item = $this->home_model->getSchoolName($page);
+                break;
+            case 'research':
+                $lister = $this->home_model->getLister($page,$location,$sec);
+                $item = $this->home_model->getResearch($page);
+                break;
+            case 'specialty':
+                $lister = $this->home_model->getLister($page,$location,$sec);
+                $item = $this->home_model->getSpecialty($page);
+                break;
+        }
+        $data['lister'] = $lister;
+        $data['item'] = $item;
+        $data['location'] = $location;
 		$data['current'] = $page;
 		$data = $this->set_user_info($data);
 		// e($data);

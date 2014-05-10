@@ -1,33 +1,27 @@
 <div id="main">
 	<div class="list-nav">
 		<ul class="list-nav-classify">
-			<li><a href="">全部</a></li>
-			<li><a href="" class="act">学校</a></li>
-			<li><a href="">专业</a></li>
-			<li><a href="">研究方向</a></li>
+        <li><a href="<?php echo base_url() ?>index.php/home/lister" <?php if($location == 'all') { ?> class="act" <?php }?>>全部</a></li>
+            <li><a href="<?php echo base_url() ?>index.php/home/lister/university" <?php if($location == 'university') { ?> class="act" <?php }?>>学校</a></li>
+			<li><a href="<?php echo base_url() ?>index.php/home/lister/specialty" <?php if($location == 'specialty') { ?> class="act" <?php }?>>专业</a></li>
+			<li><a href="<?php echo base_url() ?>index.php/home/lister/research" <?php if($location == 'research') { ?> class="act" <?php }?>>研究方向</a></li>
 		</ul>
 		<form class="search-block" action="">
-            			<input type="text" class="search-input-ctx" name="q" autocomplete="off" spellcheck="false" placeholder="搜索论文、作者">
-            			<button class="btn-search" type="submit">搜索</button>
-        		</form>
+                    <input type="text" class="search-input-ctx" name="q" autocomplete="off" spellcheck="false" placeholder="搜索论文、作者">
+                    <button class="btn-search" type="submit">搜索</button>
+        </form>
 	</div>
 
-	<div class="list-classify-block">
-		<?php foreach ($university as $key => $value) {
-		?>
-		<a href=""><?= $value['university']?></a></li>
-		<?php }; ?>
-
-<!-- 		<?php foreach ($research as $key => $value) {
-		?>
-		<a href=""><?= $value['research']?></a></li>
-		<?php }; ?>
-
-		<?php foreach ($specialty as $key => $value) {
-		?>
-		<a href=""><?= $value['specialty']?></a></li>
-		<?php }; ?> -->
-	</div>
+    <div class="list-classify-block">
+        
+        <?php 
+            if($item) {
+            foreach ($item as $key => $value) {
+        ?>
+            <a href="<?php echo base_url();?>index.php/home/lister/<?=$location?>/<?=$value[$location]?>"><?= $value[$location]?></a></li>
+        <?php 
+        }}; ?> 
+    </div>
 
 	<table class="list-ctx-block">
 		<tr>
@@ -38,18 +32,18 @@
 			<th class="list-paper-download">下载</th>
 		</tr>
 
-		<?php  foreach ($lister as $key => $value)
+		<?php $i = 1; foreach ($lister as $key => $value)
 		 {
 			
 		?>
 		<tr>
-			<td class="list-paper-num"><?= $value['id'];?></td>
+            <td class="list-paper-num"><?= $i;?></td>
 			<td class="list-paper-serial"><?= $value['publisher_id'];?></td>
 			<td class="list-paper-title"><a href=""><?= $value['title'];?></a></td>
 			<td class="list-paper-author"><?= $value['author'];?></td>
 			<td class="list-paper-download"><a href=""></a></td>
 		</tr>
-		<?php }; ?>
+		<?php $i++; }; ?>
 	</table>
 
 	<div class="pager-block">
