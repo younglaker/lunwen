@@ -6,7 +6,7 @@
 			<li><a href="<?php echo base_url() ?>index.php/home/lister/specialty" <?php if($location == 'specialty') { ?> class="act" <?php }?>>专业</a></li>
 			<li><a href="<?php echo base_url() ?>index.php/home/lister/research" <?php if($location == 'research') { ?> class="act" <?php }?>>研究方向</a></li>
 		</ul>
-		<form class="search-block" action="">
+        <form class="search-block" action="<?php echo base_url()?>index.php/home/search" method="get">
                     <input type="text" class="search-input-ctx" name="q" autocomplete="off" spellcheck="false" placeholder="搜索论文、作者">
                     <button class="btn-search" type="submit">搜索</button>
         </form>
@@ -38,10 +38,10 @@
 		?>
 		<tr>
             <td class="list-paper-num"><?= $i;?></td>
-			<td class="list-paper-serial"><?= $value['publisher_id'];?></td>
-			<td class="list-paper-title"><a href=""><?= $value['title'];?></a></td>
-			<td class="list-paper-author"><a href=""><?= $value['author'];?></a></td>
-			<td class="list-paper-download"><a href=""></a></td>
+			<td class="list-paper-serial"><?= $value['number'];?></td>
+            <td class="list-paper-title"><a href="<?= base_url()?>index.php/home/paper/<?= $value['id'];?>"><?= $value['title'];?></a></td>
+			<td class="list-paper-author"><a href="<?= base_url() .'index.php/home/search?q='.$value['name'];?>"><?= $value['name'];?></a></td>
+            <td class="list-paper-download"><a href="<?= base_url() . $value['attachment'];?>"></a></td>
 		</tr>
 		<?php $i++; }; ?>
 	</table>

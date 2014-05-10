@@ -256,9 +256,16 @@
 		$data['css'] = $base_url."res/css";
 		$data['js'] = $base_url."res/js";
 		$data['img'] = $base_url."res/img";
-		
+        $q = $this->input->get('q');
+        if($q == NULL)
+        {
+            $data['search'] = '';
+        }
+        else
+        {
+            $data['search'] = $this->home_model->search($q);	
+        } 
 		$data = $this->set_user_info($data);
-		
 		$this->load->view("common/header.php", $data);
 		$this->load->view('search_result', $data);
 		$this->load->view("common/footer.php", $data);
