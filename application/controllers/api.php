@@ -214,7 +214,9 @@ class api extends CI_Controller
                 'attachment' => $attachment,
                 'summary' => $description,
                 'publisher_id' => $this->uid,
-                'status' => $status
+                'status' => $status,
+                'number' => '',
+                'time' => date("Y-m-d H:i:s",time())
             );
             $this->api_model->doUpload($data);
             redirect('admin/paper');
