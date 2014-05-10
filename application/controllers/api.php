@@ -103,7 +103,7 @@ class api extends CI_Controller
      * userdelete api
      *
      */
-    public function userdelete($uid,$from)
+    public function userdelete($uid,$from = '')
     {
         if( $this->isAdmin() )
         {
@@ -198,6 +198,7 @@ class api extends CI_Controller
         $career = $this->input->post('career');
         $catage = $this->input->post('catage');
         $description = $this->input->post('description');
+        $number = $this->input->post('number');
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'gif|jpg|png|doc|docx|ppt|pptx|excel';
         $this->load->library('upload', $config);
@@ -223,7 +224,7 @@ class api extends CI_Controller
                 'summary' => $description,
                 'publisher_id' => $this->uid,
                 'status' => $status,
-                'number' => '',
+                'number' => $number,
                 'time' => date("Y-m-d H:i:s",time())
             );
             $this->api_model->doUpload($data);
@@ -235,7 +236,7 @@ class api extends CI_Controller
      * update paper
      *
      */
-    public function do_update($pid,$from)
+    public function do_update($pid,$from = '')
     {
         if( !is_login() ) show_404();
         $title = $this->input->post('title');
