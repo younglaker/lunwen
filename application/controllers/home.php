@@ -249,4 +249,20 @@
 		return base_url()."index.php/home/".$location;
 	}
 
+	public function search()
+	{
+		$base_url = base_url();
+		$data['base_url'] = $base_url."index.php";
+		$data['css'] = $base_url."res/css";
+		$data['js'] = $base_url."res/js";
+		$data['img'] = $base_url."res/img";
+		
+		$data = $this->set_user_info($data);
+		
+		$this->load->view("common/header.php", $data);
+		$this->load->view('search_result', $data);
+		$this->load->view("common/footer.php", $data);
+		
+	}
+
 }
