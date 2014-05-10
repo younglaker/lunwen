@@ -11,17 +11,17 @@
 			<th class="list-paper-download">操作</th>
 		</tr>
 
-		<?php foreach ($selfCollect as $key => $value) { ?>
+		<?php $i = 1; foreach ($selfCollect as $key => $value) { ?>
 		<tr>
-			<td class="list-paper-num"><?= $value['id'];?></td>
-			<td class="list-paper-serial"><?= $value['number'];?></td>
-			<td class="list-paper-title"><a href=""><?= $value['author'];?></a></td>
-			<td class="list-paper-author"><?= $value['id'];?></td>
+			<td class="list-paper-num"><?= $i;?></td>
+			<td class="list-paper-serial"><?= $value['publisher_id'];?></td>
+			<td class="list-paper-title"><a href="<?php echo base_url();?>index.php/home/paper/<?php echo $value['id'];?>"><?= $value['title'];?></a></td>
+			<td class="list-paper-author"><?= $value['author'];?></td>
 			<td class="list-paper-deal">
-				<a href="">取消收藏</a>
+                <a href="<?php echo base_url();?>index.php/api/delcollection/<?php echo $value['id'];?>">取消收藏</a>
 			</td>
 		</tr>
-		<?php }; ?>
+		<?php $i++; }; ?>
 	</table>
 
 	<h2 class="mrg-top-20">我的上传</h2>
@@ -34,13 +34,13 @@
 			<th class="list-paper-download">操作</th>
 		</tr>
 
-		<?php foreach ($selfPublish as $key => $value) {
+		<?php $i = 1; foreach ($selfPublish as $key => $value) {
 			# code...
 		 ?>
 		<tr>
-			<td class="list-paper-num"><?= $value['id'];?></td>
+			<td class="list-paper-num"><?= $i ?></td>
 			<td class="list-paper-serial"><?= $value['number'];?></td>
-			<td class="list-paper-title"><a href=""><?= $value['title'];?></a></td>
+			<td class="list-paper-title"><a href="<?php echo base_url();?>index.php/home/paper/<?php echo $value['id'];?>"><?= $value['title'];?></a></td>
 			<td class="list-paper-author">
 			<?php switch ($value['status']) {
 				case '0':
@@ -60,7 +60,7 @@
                 <a href="<?php echo base_url();?>index.php/api/paperdelete/<?php echo $value['id'];?>/user">删除</a>
 			</td>
 		</tr>
-		<?php }; ?>
+		<?php $i++; }; ?>
 	</table>
 
 	<!-- <div class="pager-block">
