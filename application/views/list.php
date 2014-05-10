@@ -38,7 +38,7 @@
 		?>
 		<tr>
             <td class="list-paper-num"><?= $i;?></td>
-			<td class="list-paper-serial"><?= $value['publisher_id'];?></td>
+			<td class="list-paper-serial"><?= $value['number'];?></td>
 			<td class="list-paper-title"><a href=""><?= $value['title'];?></a></td>
 			<td class="list-paper-author"><a href=""><?= $value['author'];?></a></td>
 			<td class="list-paper-download"><a href=""></a></td>

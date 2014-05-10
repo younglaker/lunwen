@@ -65,7 +65,7 @@ CREATE TABLE `thesis` (
   `research` varchar(200) NOT NULL COMMENT '研究方向',
   `summary` text NOT NULL COMMENT '论文简介',
   `attachment` varchar(200) NOT NULL COMMENT '附件地址',
-  `status` int(2) NOT NULL DEFAULT '0' COMMENT '审核状态,0为未审核，1为审核通过',
+  `status` int(2) NOT NULL DEFAULT '0' COMMENT '审核状态,0为审核中,1为审核通过,2为删除',
   `click` int(5) NOT NULL DEFAULT '0' COMMENT '点击量',
   `time` datetime NOT NULL COMMENT '论文发表时间',
   PRIMARY KEY (`id`)

@@ -14,7 +14,7 @@
 		<?php foreach ($selfCollect as $key => $value) { ?>
 		<tr>
 			<td class="list-paper-num"><?= $value['id'];?></td>
-			<td class="list-paper-serial"><?= $value['publisher_id'];?></td>
+			<td class="list-paper-serial"><?= $value['number'];?></td>
 			<td class="list-paper-title"><a href=""><?= $value['author'];?></a></td>
 			<td class="list-paper-author"><?= $value['id'];?></td>
 			<td class="list-paper-deal">
