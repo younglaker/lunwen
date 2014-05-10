@@ -10,6 +10,7 @@
 			</select>
 			<input type="text" name="search-ctx" id="search-ctx">
 			<input type="submit" name="search-btn" id="search-btn" value="搜索" >
+			<a href="<?php echo base_url('index.php/home/lister')?>"> >>随便看看</a>
 		</form>
 	</div>
 	<div class="recommend-block">

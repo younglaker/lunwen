@@ -101,10 +101,10 @@ class Home_model extends CI_Model {
 	/**
 	 *  本人发布论文
 	 */
-	public function selfPublish($user_name)
+	public function selfPublish($user_id)
 	{
-		$sql = "SELECT * FROM thesis WHERE author = ?";
-		$query = $this->db->query($sql, array($user_name));
+		$sql = "SELECT * FROM thesis WHERE publisher_id = ?";
+		$query = $this->db->query($sql, array($user_id));
 		return $query->result_array();
 	}
 

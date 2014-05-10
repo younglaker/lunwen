@@ -194,7 +194,7 @@
 		$user_name = $data['name'];
 		$user_id = $data['uid'];
 
-		$selfPublish = $this->home_model->selfPublish($user_name);
+		$selfPublish = $this->home_model->selfPublish($user_id);
 		$data['selfPublish'] = $selfPublish;
 
 		$selfCollect = $this->home_model->selfCollect($user_id);

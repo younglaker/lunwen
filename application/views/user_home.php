@@ -11,9 +11,7 @@
 			<th class="list-paper-download">操作</th>
 		</tr>
 
-		<?php foreach ($selfCollect as $key => $value) {
-			# code...
-		?>
+		<?php foreach ($selfCollect as $key => $value) { ?>
 		<tr>
 			<td class="list-paper-num"><?= $value['id'];?></td>
 			<td class="list-paper-serial"><?= $value['publisher_id'];?></td>
@@ -41,9 +39,19 @@
 		 ?>
 		<tr>
 			<td class="list-paper-num"><?= $value['id'];?></td>
-			<td class="list-paper-serial"><?= $value['publisher_id'];?></td>
+			<td class="list-paper-serial"><?= $value['number'];?></td>
 			<td class="list-paper-title"><a href=""><?= $value['title'];?></a></td>
-			<td class="list-paper-author"><?= $value['status'];?></td>
+			<td class="list-paper-author">
+			<?php switch ($value['status']) {
+				case '0':
+					echo '审核中';
+					break;
+				
+				case '1':
+					echo '已发布';
+					break;
+			} ?>
+			</td>
 			<td class="list-paper-deal">
 				<a href="">编辑</a>
 				<a href="">删除</a>
@@ -52,7 +60,7 @@
 		<?php }; ?>
 	</table>
 
-	<div class="pager-block">
+	<!-- <div class="pager-block">
 		<ul class="pager">
 			<li><a href="">上一页</a></li>
 			<li><a href="" class="act">1</a></li>
@@ -62,5 +70,5 @@
 			<li><a href="">5</a></li>
 			<li><a href="">下一页</a></li>
 		</ul>
-	</div>
+	</div> -->
 </div>
