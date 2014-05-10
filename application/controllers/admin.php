@@ -122,7 +122,7 @@ class Admin extends CI_Controller {
      * @return void 
      */
 
-    function edit($pid)
+    function edit($pid,$from = '')
     {
         
         if( !is_login() ) 
@@ -135,6 +135,7 @@ class Admin extends CI_Controller {
         $data['js'] = $base_url."res/js";
         $data['img'] = $base_url."res/img";
         $data['paper'] = $this->admin_model->getPaper($pid);
+        $data['from'] = $from;
         $data = $this->set_user_info($data);
         $this->load->view("common/header.php", $data);
         $this->load->view('admin_edit', $data);

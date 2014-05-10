@@ -5,6 +5,12 @@
             <label for="upload-title">标题：</label>
             <input type="text" name="title" id="upload-titl" class="input-ctx">
         </p>
+        <?php if($role > 1) {?>
+        <p>
+            <label for="upload-title" style="color:red">*编号：</label>
+            <input type="text" name="number" value="" id="upload-titl" class="input-ctx">
+        </p>
+        <?php }?>
         <p>
             <label for="upload-author">作者：</label>
             <input type="text" name="author" id="upload-author" class="input-ctx">

@@ -1,6 +1,6 @@
 <div id="main">
     <h2 class="title-h2">编辑论文</h2>
-    <form class="upload-block" action="<?php echo base_url();?>index.php/api/do_update/<?php echo $paper[0]['id'];?>" method="post" enctype="multipart/form-data">
+    <form class="upload-block" action="<?php echo base_url();?>index.php/api/do_update/<?php echo $paper[0]['id'].'/'.$from;?>" method="post" enctype="multipart/form-data">
         
        <p>
             <label for="upload-title">标题：</label>
@@ -45,7 +45,7 @@
             <input type="file" name="attachment">
         </p>
         <p>
-            <input type="radio" name="publish"  value="0">拒绝
+            <input type="radio" name="publish"  value="2">拒绝
             <input type="radio" name="publish" checked = "true" value="1">发布
         </p>
         <p>

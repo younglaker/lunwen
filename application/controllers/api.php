@@ -103,13 +103,21 @@ class api extends CI_Controller
      * userdelete api
      *
      */
-    public function userdelete($uid)
+    public function userdelete($uid,$from)
     {
         if( $this->isAdmin() )
         {
             if( $this->admin_model->userDelete($uid) )
             {
-                redirect('admin/users');
+                if($from = 'user')
+                {
+                    
+                    redirect('home/homepage');
+                }
+                else
+                {
+                    redirect('admin/users');
+                }
             }
             else
             {
@@ -227,7 +235,7 @@ class api extends CI_Controller
      * update paper
      *
      */
-    public function do_update($pid)
+    public function do_update($pid,$from)
     {
         if( !is_login() ) show_404();
         $title = $this->input->post('title');
@@ -268,7 +276,13 @@ class api extends CI_Controller
         }
 
         $this->api_model->doUpdate($pid,$data);
-        redirect('admin/paper');
+        if($from == 'user') {
+            redirect('home/homepage');
+        }
+        else
+        {
+            redirect('admin/paper');
+        }
     }
 
 

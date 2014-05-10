@@ -22,6 +22,9 @@
             <a href="<?php echo base_url();?>index.php/home/register">注册</a>
         <?php } else { ?>
             <a href="<?php echo base_url();?>index.php/home/homepage">个人中心</a>
+            <?php if( $role > 1 ) { ?>
+                <a href="<?php echo base_url();?>index.php/admin/paper">后台中心</a>
+            <?php }?>
             <a href="<?php echo base_url();?>index.php/home/logout">注销</a>
         <?php }?>
         </div>

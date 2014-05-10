@@ -126,9 +126,12 @@ class Home_model extends CI_Model {
 
     public function search($value) 
     {
-        $sql = "SELECT t.title,t.id,t.number,t.attachment,u.name FROM thesis as t ,p_user as u WHERE t.publisher_id = u.id AND t.title LIKE '%$value%' 
+        $sql = "SELECT t.title,t.id,t.number,t.attachment,u.name FROM thesis as t ,p_user as u 
+                WHERE t.publisher_id = u.id 
+                AND 
+                (t.title LIKE '%$value%' 
                 OR 
-                t.publisher_id = (SELECT id FROM p_user WHERE name LIKE '%$value%')";
+                t.publisher_id = (SELECT id FROM p_user WHERE name LIKE '%$value%'))";
 		$query = $this->db->query($sql);
 		return $query->result_array();
     }
