@@ -334,6 +334,25 @@ class api extends CI_Controller
         } 
     }
 
+    public function collection($pid) 
+    {
+        if( !is_login() ) show_404();
+        $data = array(
+            'id' => '',
+            'p_id' => $pid,
+            'u_id' => $this->uid
+        );
+        $this->api_model->collection($data);
+        redirect('home/homepage');
+    }
+
+    public function delcollection($pid)
+    {
+        if( !is_login() ) show_404();
+        $this->api_model->delcollection($pid,$this->uid);
+        redirect('home/homepage');
+    }
+
 
     private function isRegister($data)
     {

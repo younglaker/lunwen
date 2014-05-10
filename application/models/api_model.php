@@ -39,6 +39,22 @@ class Api_model extends CI_Model
         return count( $res ) > 0 ? TRUE:FALSE;
     }
 
+    public function collection($data) 
+    {
+        $sql = "SELECT COUNT(id) AS num FROM collect_paper WHERE p_id = ? AND u_id = ?";
+        $query = $this->db->query($sql,array($data['p_id'],$data['u_id']));
+        $res = $query->result_array();
+        if($res[0]['num'] == 0) {
+            return $this->db->insert('collect_paper',$data);
+        }
+    }
+
+    public function delcollection($pid,$uid)
+    {
+        $sql = "DELETE FROM collect_paper WHERE p_id = ? AND u_id = ?";
+        $this->db->query($sql,array($pid,$uid));   
+    }
+
     public function getUserInfoByname($name)
     {
         $sql = "SELECT id,name,role FROM p_user WHERE name = ?";

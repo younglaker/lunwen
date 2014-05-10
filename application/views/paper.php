@@ -18,11 +18,11 @@
 		<?php else: ?>
 			<h1 class="paper-title"><?php echo $paper[0]['title']; ?></h1>
 			<p class="paper-deal">
-				<a href="">下载</a>
-				<a href="">收藏</a>
+                <a href="<?= base_url() . $paper[0]['attachment'];?>">下载</a>
+                <a href="<?php echo base_url();?>index.php/api/collection/<?php echo $paper[0]['id'];?>">收藏</a>
 				<!-- 登录显示修改状态 -->
 				<?php if ($uid !== FALSE): ?>
-					<a href="">修改</a>
+                    <a href="<?php echo base_url();?>index.php/admin/edit/<?php echo $paper[0]['id'];?>">修改</a>
 				<?php endif ?>
 			</p>
 			<dl class="paper-info">
