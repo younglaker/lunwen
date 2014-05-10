@@ -6,7 +6,7 @@
 <!-- 			<li><a href="">专业</a></li>
 			<li><a href="">研究方向</a></li> -->
 		</ul>
-		<form class="search-block" action="">
+        <form class="search-block" action="<?php echo base_url()?>index.php/home/search" method="get">
             <input type="text" class="search-input-ctx" name="q" autocomplete="off" spellcheck="false" placeholder="搜索论文、作者">
             <button class="btn-search" type="submit">搜索</button>
         </form>

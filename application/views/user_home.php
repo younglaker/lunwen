@@ -49,12 +49,15 @@
 				
 				case '1':
 					echo '已发布';
+                    break;
+                case '2':
+					echo '拒绝';
 					break;
 			} ?>
 			</td>
 			<td class="list-paper-deal">
-				<a href="">编辑</a>
-				<a href="">删除</a>
+                <a href="<?php echo base_url();?>index.php/admin/edit/<?php echo $value['id'];?>/user">编辑</a>
+                <a href="<?php echo base_url();?>index.php/api/paperdelete/<?php echo $value['id'];?>/user">删除</a>
 			</td>
 		</tr>
 		<?php }; ?>

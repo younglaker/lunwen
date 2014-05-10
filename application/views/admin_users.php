@@ -26,15 +26,19 @@
             <?php if( $value['role'] < 2 ) {?>
                 <td>普通用户</td>
                 <td class="">
-                    <a href="<?php echo base_url();?>index.php/api/setrole/<?php echo $value['id'];?>/2">设为管理员</a>
-                    <a href="<?php echo base_url();?>index.php/api/setrole/<?php echo $value['id'];?>/3">设为超级管理员</a>
+                    <?php if($role == 3) {?>
+                        <a href="<?php echo base_url();?>index.php/api/setrole/<?php echo $value['id'];?>/2">设为管理员</a>
+                        <a href="<?php echo base_url();?>index.php/api/setrole/<?php echo $value['id'];?>/3">设为超级管理员</a>
+                    <?php }?>
                     <a href="<?php echo base_url();?>index.php/api/userdelete/<?php echo $value['id'];?>">删除</a>
                 </td>
             <?php } else {?>
                 <td>管理员</td>
                 <td class="">
-                <a href="<?php echo base_url();?>index.php/api/setrole/<?php echo $value['id'];?>/1">取消管理员</a>
-                <a href="<?php echo base_url();?>index.php/api/setrole/<?php echo $value['id'];?>/1">取消超级管理员</a>
+                    <?php if($role == 3) {?>
+                        <a href="<?php echo base_url();?>index.php/api/setrole/<?php echo $value['id'];?>/1">取消管理员</a>
+                        <a href="<?php echo base_url();?>index.php/api/setrole/<?php echo $value['id'];?>/1">取消超级管理员</a>
+                    <?php }?>
                 <a href="<?php echo base_url();?>index.php/api/userdelete/<?php echo $value['id'];?>">删除</a>
                 </td>
             <?php }?>

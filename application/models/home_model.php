@@ -73,12 +73,12 @@ class Home_model extends CI_Model {
         if( $sec != '' ) 
         {
             
-            $sql = "SELECT *, '$total' AS total FROM thesis WHERE $location = '$sec' ORDER BY id DESC LIMIT $offset,$pagesize";
+            $sql = "SELECT t.number,t.id,t.title,t.attachment,p.name,'$total' AS total FROM thesis AS t, p_user AS p WHERE $location = '$sec' AND t.publisher_id = p.id ORDER BY t.id DESC LIMIT $offset,$pagesize";
         }
         else
         {
 
-            $sql = "SELECT *, '$total' AS total FROM thesis  ORDER BY id DESC LIMIT $offset,$pagesize";
+            $sql = "SELECT t.number,t.title,t.id,t.attachment,p.name,'$total' AS total FROM thesis AS t, p_user AS p WHERE  t.publisher_id = p.id ORDER BY t.id DESC LIMIT $offset,$pagesize";
         }
 		$query  = $this->db->query($sql);
 		return $query->result_array();
@@ -122,7 +122,19 @@ class Home_model extends CI_Model {
 		$sql = "SELECT * FROM thesis WHERE publisher_id = ?";
 		$query = $this->db->query($sql, array($user_id));
 		return $query->result_array();
-	}
+    }
+
+    public function search($value) 
+    {
+        $sql = "SELECT t.title,t.id,t.number,t.attachment,u.name FROM thesis as t ,p_user as u 
+                WHERE t.publisher_id = u.id 
+                AND 
+                (t.title LIKE '%$value%' 
+                OR 
+                t.publisher_id = (SELECT id FROM p_user WHERE name LIKE '%$value%'))";
+		$query = $this->db->query($sql);
+		return $query->result_array();
+    }
 
 	/**
 	 *  本人收藏论文

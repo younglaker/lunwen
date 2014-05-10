@@ -1,15 +1,15 @@
 <div id="main">
 	<div class="ctx-center">
 		<img src="<?php echo $img;?>/title.png" alt="">
-		<form action="" id="search-form-index">
+        <form id="search-form-index" action="<?php echo base_url()?>index.php/home/search" method="get">
 			<select name="search-classify" id="search-classify">
 				<option value="标题">标题</option>
 				<option value="作者">作者</option>
 				<!-- <option value="编号">编号</option>
 				<option value="导师">导师</option> -->
 			</select>
-			<input type="text" name="search-ctx" id="search-ctx">
-			<input type="submit" name="search-btn" id="search-btn" value="搜索" >
+			<input type="text" name="q" id="search-ctx">
+			<input type="submit" id="search-btn" value="搜索" >
 			<a href="<?php echo base_url('index.php/home/lister')?>"> >>随便看看</a>
 		</form>
 	</div>
