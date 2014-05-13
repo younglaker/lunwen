@@ -45,7 +45,7 @@
 			</dl>
 			<h2 class="paper-sub-title">关键词：</h2>
 			<div class="paper-keywords">低气压； 辉光放电； 等离子体； 电子密度； 数值模拟；</div>
-			<h2 class="paper-sub-title">论文简介：</h2>
+			<h2 class="paper-sub-title">论文摘要：</h2>
 			<div class="paper-intro"> <?php echo $paper[0]['summary']; ?> </div>			
 		<?php endif ?>
 	</div>

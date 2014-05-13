@@ -1,5 +1,6 @@
 <div id="main">
 	<p class="mrg-top-10"><a href="<?php echo base_url();?>index.php/admin/upload" class="a-btn-lg">上传新论文</a></p>
+	<p class="mrg-top-20"><a href="<?php echo base_url();?>index.php/home/modifypsw">修改密码</a></p>
 
 	<h2 class="mrg-top-20">我的收藏</h2>
 	<table class="list-ctx-block">

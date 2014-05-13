@@ -30,7 +30,7 @@ class Admin_model extends CI_Model {
         $offset = ($page-1)*$pagesize;
         $count = count($result) > 0 ? $result[0]['num'] : 1;
         $total = ceil($count/$pagesize);
-        $sql = "SELECT t.id,t.number,t.attachment,t.title,u.name,$total as total 
+        $sql = "SELECT t.id,t.number,t.attachment,t.title,u.name,t.author,$total as total 
                 FROM p_user as u, thesis as t 
                 WHERE u.id = t.publisher_id AND t.status = $type
                 ORDER BY t.id DESC

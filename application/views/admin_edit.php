@@ -37,7 +37,7 @@
             <input type="text" name="catage" id="upload-catage" value ="<?php echo $paper[0]['research'];?>" class="input-ctx">
         </p>
         <p>
-            <label for="">论文简介：</label>
+            <label for="">论文摘要：</label>
             <textarea name="description" id="" cols="100" rows="10"><?php echo $paper[0]['summary'];?>"</textarea>
         </p>
         <p>

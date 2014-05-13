@@ -26,9 +26,14 @@ class Api_model extends CI_Model
 
     public function doUpdate($pid,$data)
     {
-
         $this->db->where('id', $pid);
         $this->db->update('thesis', $data);
+    }
+
+    public function doUpdateUser($uid, $data)
+    {
+        $this->db->where('id', $uid);
+        $this->db->update('p_user', $data);
     }
 
     public function doLogin($data)
@@ -36,6 +41,7 @@ class Api_model extends CI_Model
         $sql = "SELECT id FROM p_user WHERE name = ? AND password = ?";
         $query = $this->db->query($sql,array($data['name'],md5( $data['password']."lunwen" )));
         $res = $query->result_array();
+        print_r($res);
         return count( $res ) > 0 ? TRUE:FALSE;
     }
 
@@ -59,6 +65,13 @@ class Api_model extends CI_Model
     {
         $sql = "SELECT id,name,role FROM p_user WHERE name = ?";
         $query = $this->db->query($sql,array($name));
+        return $query->result_array();
+    }
+
+    public function getUserInfoById($uid)
+    {
+        $sql = "SELECT id,name,role FROM p_user WHERE id = ?";
+        $query = $this->db->query($sql,array($uid));
         return $query->result_array();
     }
 }

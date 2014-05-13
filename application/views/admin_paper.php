@@ -27,7 +27,7 @@
 			<td class="list-paper-num"><?php echo $i; ?></td>
             <td class="list-paper-serial"><?php echo $value['number'];?></td>
             <td class="list-paper-title"><a href="<?php echo base_url().'/'.$value['attachment'];?>"><?php echo $value['title'];?></a></td>
-            <td class="list-paper-author"><?php echo $value['name']; ?></td>
+            <td class="list-paper-author"><?php echo $value['author']; ?></td>
 			<td class="list-paper-deal">
                 <a href="<?php echo base_url();?>index.php/admin/edit/<?php echo $value['id'];?>">编辑</a>
                 <a href="<?php echo base_url();?>index.php/api/paperdelete/<?php echo $value['id'];?>">删除</a>

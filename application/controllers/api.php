@@ -131,6 +131,50 @@ class api extends CI_Controller
     }
 
     /**
+     * modify psw api
+     */
+    public function modifypsw()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+            $uid = $this->uid;
+            $userInfo = $this->api_model->getUserInfoById( $uid );
+            print_r($userInfo);
+            $data = array(
+                'name' => $userInfo[0]['name'],
+                'password' => $this->input->post('modify-psw-old')
+            );
+            $psw_new = md5( $this->input->post('modify-psw-new').'lunwen' );
+            $psw_conf = md5( $this->input->post('modify-psw-conf').'lunwen' );
+
+            if( $data['name'] != "" && $data['password'] != "" && $psw_new != "" )
+            {
+                if( $this->api_model->doLogin( $data )){
+                    if ($psw_new == $psw_conf) {
+                        echo "yes";
+                        $data['password'] = $psw_new;
+                        $this->api_model->doUpdateUser($uid,$data);
+                    }
+                }
+                switch( $userInfo[0]['role'] )
+                {
+                    case 1:
+                        redirect('home/homepage');
+                    break;
+                    case 2:
+                        redirect('admin/paper');
+                    case 3:
+                        redirect('admin/paper');
+                    break;
+                }
+            }
+        }
+        else
+        {
+            show_404();
+        }
+    }
+    /**
      * set user role
      *
      */
