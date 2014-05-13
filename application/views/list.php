@@ -40,7 +40,7 @@
             <td class="list-paper-num"><?= $i;?></td>
 			<td class="list-paper-serial"><?= $value['number'];?></td>
             <td class="list-paper-title"><a href="<?= base_url()?>index.php/home/paper/<?= $value['id'];?>"><?= $value['title'];?></a></td>
-			<td class="list-paper-author"><a href="<?= base_url() .'index.php/home/search?q='.$value['name'];?>"><?= $value['name'];?></a></td>
+			<td class="list-paper-author"><a href="<?= base_url() .'index.php/home/search?q='.$value['author'];?>"><?= $value['author'];?></a></td>
             <td class="list-paper-download"><a href="<?= base_url() . $value['attachment'];?>"></a></td>
 		</tr>
 		<?php $i++; }; ?>
