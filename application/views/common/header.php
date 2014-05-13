@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=7" />
-<title>论文库</title>
+<title>学位论管理系统</title>
 <meta content="width=device-width,initial-scale=1" name="viewport">
 <link rel="stylesheet" href="<?php echo $css;?>/cssreset.css">
 <link rel="stylesheet" href="<?php echo $css;?>/common.css">
@@ -14,7 +14,7 @@
 <div class="naver">
 	<div class="container">
     	<div class="naver-brand">
-        	<a href="<?php echo base_url(); ?>">论文库</a>
+        	<a href="<?php echo base_url(); ?>">学位论管理系统</a>
         </div>
         <div class="naver-sub">
         <?php if( !$uid ) { ?>
