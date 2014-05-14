@@ -243,10 +243,13 @@ a:hover {
 	width: 139px;
 }
 .list-ctx-block .list-paper-title {
-	width: 589px;
+	width: 509px;
 }
 .list-ctx-block .list-paper-author {
-	width: 115px;
+	width: 95px;
+}
+.list-ctx-block .list-paper-leader {
+	width: 110px;
 }
 .list-ctx-block .list-paper-download {
 	width: 77px;

@@ -6,7 +6,7 @@
 			<li><a href="<?php echo base_url();?>index.php/admin/approval">审批论文</a></li>
 		</ul>
 		<form class="search-block" action="">
-            <input type="text" class="search-input-ctx" name="q" autocomplete="off" spellcheck="false" placeholder="搜索论文、作者">
+            <input type="text" class="search-input-ctx" name="q" autocomplete="off" spellcheck="false" placeholder="搜索论文、作者、导师、学校">
             <button class="btn-search" type="submit">搜索</button>
         </form>
 	</div>

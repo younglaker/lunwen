@@ -73,12 +73,12 @@ class Home_model extends CI_Model {
         if( $sec != '' ) 
         {
             
-            $sql = "SELECT t.number,t.id,t.title,t.attachment,p.name,'$total' AS total FROM thesis AS t, p_user AS p WHERE $location = '$sec' AND t.publisher_id = p.id ORDER BY t.id DESC LIMIT $offset,$pagesize";
+            $sql = "SELECT t.number,t.id,t.title,t.attachment,t.leader,t.author,p.name,'$total' AS total FROM thesis AS t, p_user AS p WHERE $location = '$sec' AND t.publisher_id = p.id ORDER BY t.id DESC LIMIT $offset,$pagesize";
         }
         else
         {
 
-            $sql = "SELECT t.number,t.title,t.id,t.attachment,p.name,'$total' AS total FROM thesis AS t, p_user AS p WHERE  t.publisher_id = p.id ORDER BY t.id DESC LIMIT $offset,$pagesize";
+            $sql = "SELECT t.number,t.title,t.id,t.attachment,t.leader,t.author,p.name,'$total' AS total FROM thesis AS t, p_user AS p WHERE  t.publisher_id = p.id ORDER BY t.id DESC LIMIT $offset,$pagesize";
         }
 		$query  = $this->db->query($sql);
 		return $query->result_array();
@@ -126,7 +126,22 @@ class Home_model extends CI_Model {
 
     public function search($value) 
     {
-        $sql = "SELECT t.title,t.id,t.number,t.attachment,u.name FROM thesis as t ,p_user as u 
+        $sql = "SELECT t.title,t.id,t.number,t.attachment,t.author,t.leader FROM thesis as t
+                WHERE
+                (t.title LIKE '%$value%' 
+                OR 
+                t.leader LIKE '%$value%'
+                OR
+                t.author LIKE '%$value%'
+                OR
+                t.university LIKE '%$value%')";
+		$query = $this->db->query($sql);
+		return $query->result_array();
+    }
+/*
+    public function search($value) 
+    {
+        $sql = "SELECT t.title,t.id,t.number,t.attachment,u.name,t.author,t.leader FROM thesis as t ,p_user as u 
                 WHERE t.publisher_id = u.id 
                 AND 
                 (t.title LIKE '%$value%' 
@@ -135,7 +150,7 @@ class Home_model extends CI_Model {
 		$query = $this->db->query($sql);
 		return $query->result_array();
     }
-
+*/
 	/**
 	 *  本人收藏论文
 	 */
