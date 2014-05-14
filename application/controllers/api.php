@@ -242,18 +242,22 @@ class api extends CI_Controller
         $career = $this->input->post('career');
         $catage = $this->input->post('catage');
         $description = $this->input->post('description');
-        $number = $this->input->post('number');
+        $numbers = $this->input->post('number');
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'gif|jpg|png|doc|docx|ppt|pptx|excel';
         $this->load->library('upload', $config);
-        if ( ! $this->upload->do_upload('attachment') )
+        if ( $this->upload->do_upload('attachment') )
         {
             $error = array('error' => $this->upload->display_errors());
             var_dump($error);
         }
         else
         {
-            $data = array('upload_data' => $this->upload->data());
+            $num = explode(';',$numbers);
+            for($i = 0; $i < count($num); $i++){ 
+                echo trim($num[$i]);echo "</br>"; 
+            }
+/*            $data = array('upload_data' => $this->upload->data());
             $attachment = "uploads/".$data['upload_data']['client_name'];
             $status = $this->isAdmin() ? 1 : 0;
             $data = array(
@@ -273,7 +277,7 @@ class api extends CI_Controller
             );
             $this->api_model->doUpload($data);
             redirect('admin/paper');
-        }
+*/        }
     }
 
     /**

@@ -24,6 +24,9 @@ a:hover {
 .mrg-top-20 {
 	margin-top: 20px;
 }
+.mrg-bottom-10 {
+	margin-bottom: 10px;
+}
 .a-btn-lg {
 	padding: 10px 15px;
 	color: #fff;

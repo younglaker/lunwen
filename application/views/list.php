@@ -35,17 +35,19 @@
 
 		<?php $i = 1; foreach ($lister as $key => $value)
 		 {
-			
+		  $num = explode(';',$value['number']);
+          for( $k = 0; $k < count($num); $k++)
+          { 	
 		?>
 		<tr>
             <td class="list-paper-num"><?= $i;?></td>
-			<td class="list-paper-serial"><?= $value['number'];?></td>
+			<td class="list-paper-serial"><?=  $num[$k];?></td>
             <td class="list-paper-title"><a href="<?= base_url()?>index.php/home/paper/<?= $value['id'];?>"><?= $value['title'];?></a></td>
             <td class="list-paper-author"><a href="<?= base_url() .'index.php/home/search?q='.$value['author'];?>"><?= $value['author'];?></a></td>
 			<td class="list-paper-leader"><a href="<?= base_url() .'index.php/home/search?q='.$value['leader'];?>"><?= $value['leader'];?></a></td>
             <td class="list-paper-download"><a href="<?= base_url() . $value['attachment'];?>"></a></td>
 		</tr>
-		<?php $i++; }; ?>
+		<?php $i++; }}; ?>
 	</table>
 
 	<div class="pager-block">

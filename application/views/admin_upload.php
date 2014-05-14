@@ -7,7 +7,7 @@
         </p>
         <?php if($role > 1) {?>
         <p>
-            <label for="upload-title" style="color:red">*编号：</label>
+            <label for="upload-title" style="color:red">*编号（多个编号用分号隔开）：</label>
             <input type="text" name="number" value="" id="upload-titl" class="input-ctx">
         </p>
         <?php }?>

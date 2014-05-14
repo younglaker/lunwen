@@ -1,7 +1,7 @@
 <div id="main">
 	<div class="list-nav">
 		<ul class="list-nav-classify">
-			<!-- <li><a href="">全部</a></li> -->
+			<li><a href="<?php echo base_url('index.php/home/lister')?>">全部</a></li>
 			<li><a href="" class="act">论文详情</a></li>
 <!-- 			<li><a href="">专业</a></li>
 			<li><a href="">研究方向</a></li> -->
@@ -25,9 +25,8 @@
                     <a href="<?php echo base_url();?>index.php/admin/edit/<?php echo $paper[0]['id'];?>">修改</a>
 				<?php endif ?>
 			</p>
+			<p class="mrg-bottom-10">编号：<?php echo $paper[0]['number']; ?></p>
 			<dl class="paper-info">
-				<dt>编号：</dt>
-				<dd><?php echo $paper[0]['number']; ?></dd>
 				<dt>作者：</dt>
 				<dd><?php echo $paper[0]['author']; ?></dd>
 				<dt>导师：</dt>

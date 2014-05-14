@@ -24,9 +24,10 @@
 		</tr>
 
 		<?php $i = 1; foreach( $paperlist as $key => $value ): {?>
+        <?php $num = explode(';',$value['number']); for( $k = 0; $k < count($num); $k++):{ ?>
 		<tr>
 			<td class="list-paper-num"><?php echo $i; ?></td>
-            <td class="list-paper-serial"><?php echo $value['number'];?></td>
+            <td class="list-paper-serial"><?php echo $num[$k];?></td>
             <td class="list-paper-title"><a href="<?php echo base_url().'/'.$value['attachment'];?>"><?php echo $value['title'];?></a></td>
             <td class="list-paper-author"><?php echo $value['author']; ?></td>
             <td class="list-paper-leader"><?php echo $value['leader']; ?></td>
@@ -35,7 +36,7 @@
                 <a href="<?php echo base_url();?>index.php/api/paperdelete/<?php echo $value['id'];?>">删除</a>
 			</td>
 		</tr>
-        <?php $i++ ?> 
+        <?php $i++ ;} endfor; ?>
 		<?php } endforeach; ?>
 	</table>
 

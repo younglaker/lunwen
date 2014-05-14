@@ -73,7 +73,7 @@ class Home_model extends CI_Model {
         if( $sec != '' ) 
         {
             
-            $sql = "SELECT t.number,t.id,t.title,t.attachment,t.leader,t.author,p.name,'$total' AS total FROM thesis AS t, p_user AS p WHERE $location = '$sec' AND t.publisher_id = p.id ORDER BY t.id DESC LIMIT $offset,$pagesize";
+            $sql = "SELECT t.number,t.id,t.title,t.attachment,t.leader,t.author,p.name,'$total' AS total FROM thesis AS t, p_user AS p WHERE $location = '$sec'  ORDER BY t.id DESC LIMIT $offset,$pagesize";
         }
         else
         {
