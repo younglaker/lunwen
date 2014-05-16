@@ -41,7 +41,6 @@ class Api_model extends CI_Model
         $sql = "SELECT id FROM p_user WHERE name = ? AND password = ?";
         $query = $this->db->query($sql,array($data['name'],md5( $data['password']."lunwen" )));
         $res = $query->result_array();
-        print_r($res);
         return count( $res ) > 0 ? TRUE:FALSE;
     }
 
