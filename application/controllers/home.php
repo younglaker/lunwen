@@ -150,7 +150,8 @@
 		$data['base_url'] = $base_url."index.php";
 		$data['css'] = $base_url."res/css";
 		$data['js'] = $base_url."res/js";
-		$data['img'] = $base_url."res/img";
+        $data['img'] = $base_url."res/img";
+        $sec = urldecode($sec);
         switch($location) {
             case 'all':
                 $lister = $this->home_model->getLister($page,$location,$sec);
@@ -169,13 +170,11 @@
                 $item = $this->home_model->getSpecialty($page);
                 break;
         }
-        var_dump($lister);
         $data['lister'] = $lister;
         $data['item'] = $item;
         $data['location'] = $location;
 		$data['current'] = $page;
 		$data = $this->set_user_info($data);
-		// e($data);
 		$this->load->view("common/header.php", $data);
 		$this->load->view('list', $data);
 		$this->load->view("common/footer.php", $data);

@@ -56,7 +56,6 @@ class Home_model extends CI_Model {
 	public function getLister($page,$location,$sec)
     {
         $pagesize = 10;
-        //$sec = mb_convert_encoding($sec,'utf8','gbk');
         if( $location == 'all' || $sec == '' )
         {
 		    $sql = "SELECT COUNT(id) AS num FROM thesis";
@@ -74,7 +73,7 @@ class Home_model extends CI_Model {
         if( $sec != '' ) 
         {
             $sql = "SELECT number,id,title,attachment,author,leader,'$total' AS total FROM thesis
-                    WHERE $location LIKE '%$sec%' 
+                    WHERE $location = '$sec'
                     ORDER BY id DESC LIMIT $offset,$pagesize";
         }
         else
