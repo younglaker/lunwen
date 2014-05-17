@@ -169,6 +169,7 @@
                 $item = $this->home_model->getSpecialty($page);
                 break;
         }
+        var_dump($lister);
         $data['lister'] = $lister;
         $data['item'] = $item;
         $data['location'] = $location;

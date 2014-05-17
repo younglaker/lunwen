@@ -243,10 +243,13 @@ a:hover {
 	width: 79px;
 }
 .list-ctx-block .list-paper-serial {
-	width: 139px;
+	width: 239px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 .list-ctx-block .list-paper-title {
-	width: 509px;
+	width: 409px;
 }
 .list-ctx-block .list-paper-author {
 	width: 95px;

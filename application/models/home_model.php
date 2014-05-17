@@ -31,7 +31,7 @@ class Home_model extends CI_Model {
 	public function getPaper($pid, $uid)
 	{
 		// 此处有做限制，未审核过的论文只有自己能看见
-		$sql = "SELECT * FROM thesis WHERE id = ? AND (status = 1 OR publisher_id = ?)";
+		$sql = "SELECT *, (SELECT COUNT(id) FROM collect_paper WHERE u_id = $uid AND p_id = $pid ) as is_collected FROM thesis WHERE id = ? AND (status = 1 OR publisher_id = ?)";
 		$query = $this->db->query($sql, array($pid, $uid));
 		return $query->result_array();
 	}
@@ -56,15 +56,16 @@ class Home_model extends CI_Model {
 	public function getLister($page,$location,$sec)
     {
         $pagesize = 10;
+        //$sec = mb_convert_encoding($sec,'utf8','gbk');
         if( $location == 'all' || $sec == '' )
         {
 		    $sql = "SELECT COUNT(id) AS num FROM thesis";
         }
         else
         {
-		    $sql = "SELECT COUNT(id) AS num FROM thesis WHERE $location = '$sec'";
-        } 
-		$query = $this->db->query($sql);
+		    $sql = "SELECT COUNT(id) AS num FROM thesis WHERE $location LIKE '%$sec%' ";
+        }
+        $query = $this->db->query($sql);
 		$result = $query->result_array();
         $offset = ($page-1)*$pagesize;
 		$count = count($result) > 0 ? $result[0]['num'] : 1;
@@ -73,7 +74,7 @@ class Home_model extends CI_Model {
         if( $sec != '' ) 
         {
             $sql = "SELECT number,id,title,attachment,author,leader,'$total' AS total FROM thesis
-                    WHERE $location = '$sec' 
+                    WHERE $location LIKE '%$sec%' 
                     ORDER BY id DESC LIMIT $offset,$pagesize";
         }
         else
@@ -159,7 +160,7 @@ class Home_model extends CI_Model {
 	 */
 	public function selfCollect($user_id)
 	{
-		$sql = "SELECT * FROM thesis AS t WHERE t.id = (SELECT c.p_id FROM collect_paper AS c WHERE c.u_id = ? ) ";
+		$sql = "SELECT * FROM thesis AS t WHERE t.id IN (SELECT c.p_id FROM collect_paper AS c WHERE c.u_id = ? ) ";
 		$query = $this->db->query($sql, array($user_id));
 		return $query->result_array();
 	}

@@ -244,9 +244,15 @@ class api extends CI_Controller
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'gif|jpg|png|doc|docx|ppt|pptx|excel';
         $this->load->library('upload', $config);
-        if ( $this->upload->do_upload('attachment') )
+        echo $this->upload->do_upload('attachment');
+        if ( !$this->upload->do_upload('attachment') )
         {
             $error = array('error' => $this->upload->display_errors());
+            if($this->upload->display_errors()) {
+
+                redirect('error',$error);
+
+            }
         }
         else
         {
@@ -268,6 +274,7 @@ class api extends CI_Controller
                 'number' => trim($number),
                 'time' => date("Y-m-d H:i:s",time())
             );
+            var_dump($data);
             $this->api_model->doUpload($data);
             redirect('admin/paper');
         }
@@ -293,7 +300,7 @@ class api extends CI_Controller
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'gif|jpg|png|doc|docx|ppt|pptx|excel';
         $this->load->library('upload', $config);
-       $data = array(
+        $data = array(
             'title' => $title,
             'number' => $number,
             'author' => $author,
@@ -380,7 +387,6 @@ class api extends CI_Controller
     {
         if( !is_login() ) show_404();
         $data = array(
-            'id' => '',
             'p_id' => $pid,
             'u_id' => $this->uid
         );

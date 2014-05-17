@@ -19,7 +19,11 @@
 			<h1 class="paper-title"><?php echo $paper[0]['title']; ?></h1>
 			<p class="paper-deal">
                 <a href="<?= base_url() . $paper[0]['attachment'];?>">下载</a>
+                <?php if(!$paper[0]['is_collected']) {?>
                 <a href="<?php echo base_url();?>index.php/api/collection/<?php echo $paper[0]['id'];?>">收藏</a>
+                <?php } else { ?>
+                <a href="<?php echo base_url();?>index.php/api/delcollection/<?php echo $paper[0]['id'];?>">取消收藏</a>
+                <?php } ?>
 				<!-- 登录显示修改状态 -->
 				<?php if ($uid !== FALSE): ?>
                     <a href="<?php echo base_url();?>index.php/admin/edit/<?php echo $paper[0]['id'];?>">修改</a>
