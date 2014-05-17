@@ -68,11 +68,9 @@ class api extends CI_Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST')
         {
             $data = array(
-
                 'name' => $this->input->post('username'),
                 'password' => md5( $this->input->post('password').'lunwen' ),
                 'status' => 0,
-
             );
             $passconf = md5( $this->input->post('passconf').'lunwen' );
             if( $data['password'] !== $passconf)
@@ -242,22 +240,17 @@ class api extends CI_Controller
         $career = $this->input->post('career');
         $catage = $this->input->post('catage');
         $description = $this->input->post('description');
-        $numbers = $this->input->post('number');
+        $number = $this->input->post('number');
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'gif|jpg|png|doc|docx|ppt|pptx|excel';
         $this->load->library('upload', $config);
         if ( $this->upload->do_upload('attachment') )
         {
             $error = array('error' => $this->upload->display_errors());
-            var_dump($error);
         }
         else
         {
-            $num = explode(';',$numbers);
-            for($i = 0; $i < count($num); $i++){ 
-                echo trim($num[$i]);echo "</br>"; 
-            }
-/*            $data = array('upload_data' => $this->upload->data());
+            $data = array('upload_data' => $this->upload->data());
             $attachment = "uploads/".$data['upload_data']['client_name'];
             $status = $this->isAdmin() ? 1 : 0;
             $data = array(
@@ -272,12 +265,12 @@ class api extends CI_Controller
                 'summary' => $description,
                 'publisher_id' => $this->uid,
                 'status' => $status,
-                'number' => $number,
+                'number' => trim($number),
                 'time' => date("Y-m-d H:i:s",time())
             );
             $this->api_model->doUpload($data);
             redirect('admin/paper');
-*/        }
+        }
     }
 
     /**
@@ -300,7 +293,7 @@ class api extends CI_Controller
         $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'gif|jpg|png|doc|docx|ppt|pptx|excel';
         $this->load->library('upload', $config);
-        $data = array(
+       $data = array(
             'title' => $title,
             'number' => $number,
             'author' => $author,

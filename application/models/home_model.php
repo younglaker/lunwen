@@ -72,13 +72,13 @@ class Home_model extends CI_Model {
         // 此处不需要传入参数，获取所以得论文信息
         if( $sec != '' ) 
         {
-            $sql = "SELECT number,id,title,attachment,author,'$total' AS total FROM thesis
+            $sql = "SELECT number,id,title,attachment,author,leader,'$total' AS total FROM thesis
                     WHERE $location = '$sec' 
                     ORDER BY id DESC LIMIT $offset,$pagesize";
         }
         else
         {
-            $sql = "SELECT number,id,title,attachment,author,'$total' AS total FROM thesis
+            $sql = "SELECT number,id,title,attachment,author,leader,'$total' AS total FROM thesis
                     ORDER BY id DESC LIMIT $offset,$pagesize";
         }
 		$query  = $this->db->query($sql);
@@ -127,7 +127,7 @@ class Home_model extends CI_Model {
 
     public function search($value) 
     {
-        $sql = "SELECT t.title,t.id,t.number,t.attachment,t.author,t.leader,t.message FROM thesis as t
+        $sql = "SELECT t.title,t.id,t.number,t.attachment,t.author,t.leader FROM thesis as t
                 WHERE
                 (t.title LIKE '%$value%' 
                 OR 
