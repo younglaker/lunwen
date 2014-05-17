@@ -28,8 +28,9 @@
 		<tr>
 			<td class="list-paper-num"><?php echo $i; ?></td>
             <td class="list-paper-serial"><?php echo $num[$k];?></td>
-            <td class="list-paper-title"><a href="<?php echo base_url().'/'.$value['attachment'];?>"><?php echo $value['title'];?></a></td>
-            <td class="list-paper-author"><?php echo $value['author']; ?></td>
+            <td class="list-paper-title"><a href="<?= base_url()?>index.php/home/paper/<?= $value['id'];?>"><?= $value['title'];?></a></td>
+            <!-- <td class="list-paper-title"><a href="<?php echo base_url().'/'.$value['attachment'];?>"><?php echo $value['title'];?></a></td>
+ -->            <td class="list-paper-author"><?php echo $value['author']; ?></td>
             <td class="list-paper-leader"><?php echo $value['leader']; ?></td>
 			<td class="list-paper-deal">
                 <a href="<?php echo base_url();?>index.php/admin/edit/<?php echo $value['id'];?>">编辑</a>
