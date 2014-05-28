@@ -169,6 +169,11 @@
                 $lister = $this->home_model->getLister($page,$location,$sec);
                 $item = $this->home_model->getSpecialty($page);
                 break;
+            default :
+                $lister = $this->home_model->getLister($location,'all',$sec);
+                $item = '';
+                break;
+
         }
         $data['lister'] = $lister;
         $data['item'] = $item;

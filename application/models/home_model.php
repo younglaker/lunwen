@@ -58,11 +58,11 @@ class Home_model extends CI_Model {
         $pagesize = 10;
         if( $location == 'all' || $sec == '' )
         {
-		    $sql = "SELECT COUNT(id) AS num FROM thesis";
+		    $sql = "SELECT COUNT(id) AS num FROM  thesis WHERE status = 1";
         }
         else
         {
-		    $sql = "SELECT COUNT(id) AS num FROM thesis WHERE $location LIKE '%$sec%' ";
+		    $sql = "SELECT COUNT(id) AS num FROM thesis WHERE $location LIKE '%$sec%' AND status = 1 ";
         }
         $query = $this->db->query($sql);
 		$result = $query->result_array();
@@ -73,12 +73,12 @@ class Home_model extends CI_Model {
         if( $sec != '' ) 
         {
             $sql = "SELECT number,id,title,attachment,author,leader,'$total' AS total FROM thesis
-                    WHERE $location = '$sec'
+                    WHERE $location = '$sec' AND status = 1
                     ORDER BY id DESC LIMIT $offset,$pagesize";
         }
         else
         {
-            $sql = "SELECT number,id,title,attachment,author,leader,'$total' AS total FROM thesis
+            $sql = "SELECT number,id,title,attachment,author,leader,'$total' AS total FROM thesis WHERE status = 1
                     ORDER BY id DESC LIMIT $offset,$pagesize";
         }
 		$query  = $this->db->query($sql);
